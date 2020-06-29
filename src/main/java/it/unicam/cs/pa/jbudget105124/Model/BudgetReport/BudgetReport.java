@@ -1,10 +1,13 @@
 package it.unicam.cs.pa.jbudget105124.Model.BudgetReport;
 
+import it.unicam.cs.pa.jbudget105124.Model.Budget.Budget;
+import it.unicam.cs.pa.jbudget105124.Model.Ledger.Ledger;
 import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public interface BudgetReport {
+public interface BudgetReport extends Serializable {
 	
 	//List<Tag> getTags();
 	
@@ -14,4 +17,7 @@ public interface BudgetReport {
 	
 	double getTag(Tag t);
 
+	Ledger getLedger();
+
+	Budget getBudget();
 }

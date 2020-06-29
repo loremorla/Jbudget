@@ -1,6 +1,8 @@
 package it.unicam.cs.pa.jbudget105124.Model;
 
-public interface Utility {
+import java.io.Serializable;
+
+public interface Utility extends Serializable {
 
     int getID();
 

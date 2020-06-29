@@ -2,17 +2,21 @@ package it.unicam.cs.pa.jbudget105124.Controller;
 
 import it.unicam.cs.pa.jbudget105124.Model.Account.Account;
 import it.unicam.cs.pa.jbudget105124.Model.Budget.Budget;
+import it.unicam.cs.pa.jbudget105124.Model.Budget.BudgetManager;
 import it.unicam.cs.pa.jbudget105124.Model.Budget.BudgetTag;
 import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReport;
 import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReportBasic;
+import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReportManager;
 import it.unicam.cs.pa.jbudget105124.Model.Ledger.Ledger;
 import it.unicam.cs.pa.jbudget105124.Model.Ledger.LedgerBasic;
+import it.unicam.cs.pa.jbudget105124.Model.Ledger.LedgerManager;
 import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
 import it.unicam.cs.pa.jbudget105124.Model.Store.Reader;
 import it.unicam.cs.pa.jbudget105124.Model.Store.Writer;
 import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
 import it.unicam.cs.pa.jbudget105124.Model.Transaction.Transaction;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,40 +24,36 @@ import java.util.Map;
 
 public class SimpleController implements Controller {
 
-	private Ledger ledger;
-	private Budget budget;
 	private BudgetReport budgetReport;
 
 	public SimpleController(){
-		ledger = new LedgerBasic();
-		budget = new BudgetTag();
-		budgetReport = new BudgetReportBasic(budget,ledger);
+		budgetReport = new BudgetReportBasic(new BudgetTag(),new LedgerBasic());
 		//resetBudgetReport();
 	}
 
 	@Override
 	public void addTag(Tag t) {
 		//this.budgetReport.getLedger().addTag(t);
-		ledger.addTag(t);
+		budgetReport.getLedger().addTag(t);
 	}
 
 	@Override
 	public void removeTag(Tag t) {
 		//this.budgetReport.getLedger().removeTag(tag);
 		//removeBudgetRecord(tag);
-		ledger.removeTag(t);
+		budgetReport.getLedger().removeTag(t);
 	}
 
 	@Override
 	public Tag getTag(int ID) {
 		//return this.budgetReport.getLedger().getTag(ID);
-		return ledger.getSingleTag(ID);
+		return budgetReport.getLedger().getSingleTag(ID);
 	}
 
 	@Override
 	public List<Tag> getTags() {
 		//return this.budgetReport.getLedger().getTags();
-		return ledger.getTags();
+		return budgetReport.getLedger().getTags();
 	}
 
 	@Override
@@ -76,13 +76,13 @@ public class SimpleController implements Controller {
 
 	@Override
 	public Movement getMovement(int mID,int tID) {
-		return ledger.getSingleMovement(mID,tID);
+		return budgetReport.getLedger().getSingleMovement(mID,tID);
 	}
 
 	@Override
 	public List<Movement> getMovements() {
 		//return this.budgetReport.getLedger().getTags();
-		return ledger.getMovements();
+		return budgetReport.getLedger().getMovements();
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class SimpleController implements Controller {
 			this.logger.fine("Addition of transaction: ["+transaction.toString()+"]");
 		}else
 			this.logger.fine("Failed in addition of transaction: ["+transaction.toString()+"]");*/
-		ledger.addTransaction(t);
+		budgetReport.getLedger().addTransaction(t);
 		/*if(!ms.isEmpty()){
 			t.addMovements(ms);
 			ledger.addTransaction(t);
@@ -105,47 +105,47 @@ public class SimpleController implements Controller {
 	@Override
 	public void removeTransaction(Transaction t) {
 		//this.budgetReport.getLedger().removeTransaction(transaction);
-		ledger.removeTransaction(t);
+		budgetReport.getLedger().removeTransaction(t);
 	}
 
 	@Override
 	public Transaction getTransaction(int ID) {
 		//return this.budgetReport.getLedger().getTransaction(ID);
-		return ledger.getSingleTransaction(ID);
+		return budgetReport.getLedger().getSingleTransaction(ID);
 	}
 
 	@Override
 	public List<Transaction> getTransactions() {
-		return ledger.getTransactions();
+		return budgetReport.getLedger().getTransactions();
 	}
 
 	@Override
 	public void addAccount(Account a) {
 		// this.budgetReport.getLedger().addAccount(account);
-		ledger.addAccount(a);
+		budgetReport.getLedger().addAccount(a);
 	}
 
 	@Override
 	public void removeAccount(Account a) {
 		//this.budgetReport.getLedger().removeAccount(account);
-		ledger.removeAccount(a);
+		budgetReport.getLedger().removeAccount(a);
 	}
 
 	@Override
 	public Account getAccount(int ID) {
-		return ledger.getSingleAccount(ID);
+		return budgetReport.getLedger().getSingleAccount(ID);
 	}
 
 	@Override
 	public List<Account> getAccounts() {
-		return ledger.getAccounts();
+		return budgetReport.getLedger().getAccounts();
 	}
 
 	@Override
 	public List<Transaction> scheduledTransactionsDate(LocalDate from, LocalDate to) {
 		if(from.isBefore(to)) {
 			List<Transaction> stransactions = new ArrayList<>();
-			ledger.getTransactions()
+			budgetReport.getLedger().getTransactions()
 					.stream()
 					.filter(t -> t.getDate().isAfter(from))
 					.filter(t -> t.getDate().isBefore(to))
@@ -162,7 +162,7 @@ public class SimpleController implements Controller {
 	public List<Transaction> scheduledTransactionsTag(Tag t) {
 		if(t != null) {
 			List<Transaction> stransactions = new ArrayList<>();
-			ledger.getTransactions()
+			budgetReport.getLedger().getTransactions()
 					.stream()
 					.filter(tr -> tr.getTags().contains(t))
 					.forEach(tr -> stransactions.add(tr));
@@ -176,8 +176,8 @@ public class SimpleController implements Controller {
 
 	@Override
 	public void addBudgetTag(Tag t, Double amount) {
-		if(t!=null && ledger.getTags().contains(t)) {
-			budget.add(t,amount);
+		if(t!=null && budgetReport.getLedger().getTags().contains(t)) {
+			budgetReport.getBudget().add(t,amount);
 			/*this.logger.fine("Addition of budget record with key: ["
 					+tag.toString()+"] and value :["+value+"]");*/
 		}/*else {
@@ -189,13 +189,13 @@ public class SimpleController implements Controller {
 	@Override
 	public void removeBudgetTag(Tag t) {
 		//this.budgetReport.getBudget().remove(tag);
-		budget.remove(t);
+		budgetReport.getBudget().remove(t);
 	}
 
 	@Override
 	public Map<Tag, Double> getBudgetTags() {
 		//return this.budgetReport.getBudget().getBudgetMap();
-		return budget.getBudget();
+		return budgetReport.getBudget().getBudget();
 	}
 
 	@Override
@@ -215,13 +215,20 @@ public class SimpleController implements Controller {
         return result;*/
 	}
 
-	void read(Reader reader){
+	@Override
+	public void read(Reader reader) throws IOException, ClassNotFoundException {
 		this.budgetReport = reader.read();
 		reader.close();
 	}
 
-	void write(Writer writer){
-		writer.write();
+	@Override
+	public void write(Writer writer) throws IOException {
+		writer.write(this.budgetReport);
 		writer.close();
+	}
+
+	@Override
+	public void resetReport() {
+		this.budgetReport = BudgetReportManager.createReport(LedgerManager.createLedger(), BudgetManager.createBudget());
 	}
 }

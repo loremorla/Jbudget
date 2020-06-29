@@ -2,9 +2,10 @@ package it.unicam.cs.pa.jbudget105124.Model.Budget;
 
 import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
 
+import java.io.Serializable;
 import java.util.*;
 
-public interface Budget {
+public interface Budget extends Serializable {
 
 	void add(Tag t,double amount);
 

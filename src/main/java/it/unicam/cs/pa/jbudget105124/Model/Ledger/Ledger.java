@@ -5,9 +5,10 @@ import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
 import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
 import it.unicam.cs.pa.jbudget105124.Model.Transaction.Transaction;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface Ledger {
+public interface Ledger extends Serializable {
 	
 	List<Account> getAccounts();
 	

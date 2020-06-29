@@ -56,4 +56,14 @@ public class BudgetReportBasic implements BudgetReport {
 		return result.get(t);
 	}
 
+	@Override
+	public Ledger getLedger() {
+		return this.ledger;
+	}
+
+	@Override
+	public Budget getBudget() {
+		return this.budget;
+	}
+
 }

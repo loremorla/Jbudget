@@ -2,9 +2,12 @@ package it.unicam.cs.pa.jbudget105124.Controller;
 
 import it.unicam.cs.pa.jbudget105124.Model.Account.Account;
 import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
+import it.unicam.cs.pa.jbudget105124.Model.Store.Reader;
+import it.unicam.cs.pa.jbudget105124.Model.Store.Writer;
 import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
 import it.unicam.cs.pa.jbudget105124.Model.Transaction.Transaction;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +63,12 @@ public interface Controller {
 
 	//CONTROLLA DIFFERENZA BUDGET EFFETTIVO E PRESTABILITO
 	Map<Tag,Double> checkBudget();
+
+	void read(Reader reader) throws IOException, ClassNotFoundException;
+
+	void write(Writer writer) throws IOException;
+
+	void resetReport();
 
 	//DA IMPLEMENTARE
 	//void resetBudgetTags();

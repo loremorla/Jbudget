@@ -76,6 +76,7 @@ public class ControllerAccountGUI implements ControllerFXML {
         //accountType.clear();
     }
 
+    //prova
     @FXML
     public void refreshAccount(){
         updateAccounts();

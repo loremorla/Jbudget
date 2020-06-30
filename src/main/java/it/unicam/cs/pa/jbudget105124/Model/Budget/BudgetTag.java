@@ -11,9 +11,8 @@ public class BudgetTag implements Budget{
 	private List<Tag> tags;
 	private HashMap<Tag,Double> budget;
 	
-	public BudgetTag(){	
-		this.tags = new ArrayList<>();
-		this.budget = new HashMap<>();	
+	public BudgetTag(){
+		this.budget = new HashMap<>();
 	}
 
 	@Override
@@ -26,11 +25,12 @@ public class BudgetTag implements Budget{
 	@Override
 	public void remove(Tag t){
 		budget.remove(t);
+		tags.remove(t);
 	}
 
 	@Override
 	public List<Tag> getTags() {
-		return tags;
+		return List.copyOf(budget.keySet());
 	}
 	
 	@Override

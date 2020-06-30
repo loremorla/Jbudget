@@ -42,10 +42,9 @@ public class BudgetReportBasic implements BudgetReport {
                 .forEach(t->result.put(t,budget.getExpected(t)+effectiveBudget.get(t)));
         budget.getTags().stream().filter(t->!effectiveBudget.containsKey(t))
         		.forEach(t->result.put(t,budget.getExpected(t)));*/
-
 		budget.getTags().stream()
 				.forEach(t->result.put(t,budget.getExpected(t)+ledger.getSingleTag(t.getID()).getTotalAmount()));
-        return result;
+		return result;
 	}
 
 

@@ -28,7 +28,7 @@ public class ControllerBudgetGUI implements ControllerFXML {
     @FXML private Label notificationBudget;
     @FXML private TableView<Map.Entry<Tag,Double>> budgetTable;
     @FXML private TableColumn<Map.Entry<Tag,Double>,Tag> tagColumn;
-    @FXML private TableColumn<BudgetReport,String> totalColumn;
+    @FXML private TableColumn<Map.Entry<Tag,Double>,Double> totalColumn;
     @FXML private TableColumn<Map.Entry<Tag,Double>,Double> estAmountColumn;
     @FXML private TableColumn<Map.Entry<Tag,Double>,Double> realAmountColumn;
     private ObservableList<Map.Entry<Tag,Double>> lBudget;
@@ -81,8 +81,9 @@ public class ControllerBudgetGUI implements ControllerFXML {
                 (cellData -> new SimpleObjectProperty<>(cellData.getValue().getValue()));
         realAmountColumn.setCellValueFactory
                 (cellData -> new SimpleObjectProperty<>(cellData.getValue().getKey().getTotalAmount()));
-        /*totalColumn.setCellValueFactory
-                (cellData -> new SimpleObjectProperty<>(cellData.getValue().getKey().getTotalAmount()));*/
+        totalColumn.setCellValueFactory
+                (cellData -> new SimpleObjectProperty<>(controller.getBudgetReport()
+                        .report().get(cellData.getValue().getKey())));
         budgetTable.refresh();
     }
 }

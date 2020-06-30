@@ -176,7 +176,7 @@ public class SimpleController implements Controller {
 
 	@Override
 	public void addBudgetTag(Tag t, Double amount) {
-		if(t!=null && budgetReport.getLedger().getTags().contains(t)) {
+		if(t != null && budgetReport.getLedger().getTags().contains(t)) {
 			budgetReport.getBudget().add(t,amount);
 			/*this.logger.fine("Addition of budget record with key: ["
 					+tag.toString()+"] and value :["+value+"]");*/
@@ -213,6 +213,11 @@ public class SimpleController implements Controller {
         budget.getTags().stream().filter(t->!budgetReport.getEffectiveBudget().containsKey(t))
         		.forEach(t->result.put(t,budget.getExpected(t)));
         return result;*/
+	}
+
+	@Override
+	public BudgetReport getBudgetReport(){
+		return budgetReport;
 	}
 
 	@Override

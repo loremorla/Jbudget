@@ -17,6 +17,8 @@ public interface BudgetReport extends Serializable {
 	
 	double getTag(Tag t);
 
+	double getEffectiveAmount(Tag t);
+
 	Ledger getLedger();
 
 	Budget getBudget();

@@ -1,6 +1,7 @@
 package it.unicam.cs.pa.jbudget105124.Controller;
 
 import it.unicam.cs.pa.jbudget105124.Model.Account.Account;
+import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReport;
 import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
 import it.unicam.cs.pa.jbudget105124.Model.Store.Reader;
 import it.unicam.cs.pa.jbudget105124.Model.Store.Writer;
@@ -63,6 +64,8 @@ public interface Controller {
 
 	//CONTROLLA DIFFERENZA BUDGET EFFETTIVO E PRESTABILITO
 	Map<Tag,Double> checkBudget();
+
+	BudgetReport getBudgetReport();
 
 	void read(Reader reader) throws IOException, ClassNotFoundException;
 

@@ -16,10 +16,9 @@
    <children>
       <ButtonBar>
         <buttons>
-            <Button mnemonicParsing="false" onAction="#refreshTag" text="REFRESH" />
             <Button mnemonicParsing="false" onAction="#addTag" text="ADD" />
             <Button mnemonicParsing="false" onAction="#clearTag" text="CLEAR" />
-          <Button mnemonicParsing="false" onAction="#deleteTag" text="delete" />
+          <Button mnemonicParsing="false" onAction="#deleteTag" text="DELETE" />
         </buttons>
       </ButtonBar>
       <BorderPane prefHeight="379.0" prefWidth="600.0">
@@ -29,9 +28,8 @@
          <center>
             <TableView fx:id="tagTable" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="121.0" text="ID" />
-                <TableColumn fx:id="nameColumn" prefWidth="281.0" text="NAME" />
-                  <TableColumn fx:id="amountColumn" prefWidth="197.0" text="AMOUNT" />
+                <TableColumn fx:id="idColumn" prefWidth="140.0" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="271.0" text="NAME" />
               </columns>
             </TableView>
          </center>

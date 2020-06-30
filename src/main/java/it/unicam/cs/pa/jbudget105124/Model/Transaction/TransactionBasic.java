@@ -117,12 +117,7 @@ public class TransactionBasic implements Transaction{
 	public double getTotalAmount() {
 		amount = 0.0;
 		for(Movement m : this.getMovements()) {
-			if(m.getMovementType().equals(MovementType.CREDITS)) {
-				addAmount(m.getAmount());
-			}
-			else {
-				decrementAmount(m.getAmount());
-			}
+				addAmount(m.getRealAmount());
 		}
 		return amount;
 	}

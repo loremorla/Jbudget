@@ -43,16 +43,37 @@ public class ControllerMovementGUI implements ControllerFXML {
         this.IDtransaction = IDt;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        lMovement = FXCollections.observableArrayList();
+        lMovementType = FXCollections.observableArrayList();
+        lTag = FXCollections.observableArrayList();
+        lAccount = FXCollections.observableArrayList();
+        lTag.addAll(controller.getTags());
+        lAccount.addAll(controller.getAccounts());
+        lMovementType.add(MovementType.DEBIT);
+        lMovementType.add(MovementType.CREDITS);
+        movType.setItems(lMovementType);
+        tagName.setItems(lTag);
+        accountName.setItems(lAccount);
+        updateMovements();
+    }
+
     @FXML
     public void addMovement(){
         try {
-            if (amount.getText() != null && accountName.getValue()!=null &&
-                    movType.getValue()!=null && tagName.getValue()!=null && description.getText()!=null) {
-                Movement m = MovementManager.createMovement(Integer.parseInt(idMovement.getText()),
-                        Double.parseDouble(amount.getText()),description.getText(),accountName.getValue(),tagName.getValue(),
-                        movType.getValue(),controller.getTransaction(IDtransaction));
-                controller.addMovement(m);
-                updateMovements();
+            if(controller.getBudgetReport().getLedger().getSingleMovement(Integer.parseInt(idMovement.getText()),IDtransaction) == null) {
+                if (amount.getText() != null && accountName.getValue() != null &&
+                        movType.getValue() != null && tagName.getValue() != null) {
+                    Movement m = MovementManager.createMovement(Integer.parseInt(idMovement.getText()),
+                            Double.parseDouble(amount.getText()), description.getText(), accountName.getValue(), tagName.getValue(),
+                            movType.getValue(), controller.getTransaction(IDtransaction));
+                    controller.addMovement(m);
+                    updateMovements();
+                }
+            }
+            else{
+                notificationMovement.setText("Duplicate ID!");
             }
         }catch (Exception e){
             notificationMovement.setText("Operation Failed!");
@@ -84,22 +105,6 @@ public class ControllerMovementGUI implements ControllerFXML {
             controller.removeMovement(m);
             updateMovements();
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        lMovement = FXCollections.observableArrayList();
-        lMovementType = FXCollections.observableArrayList();
-        lTag = FXCollections.observableArrayList();
-        lAccount = FXCollections.observableArrayList();
-        lTag.addAll(controller.getTags());
-        lAccount.addAll(controller.getAccounts());
-        lMovementType.add(MovementType.DEBIT);
-        lMovementType.add(MovementType.CREDITS);
-        movType.setItems(lMovementType);
-        tagName.setItems(lTag);
-        accountName.setItems(lAccount);
-        updateMovements();
     }
 
     private void updateMovements(){

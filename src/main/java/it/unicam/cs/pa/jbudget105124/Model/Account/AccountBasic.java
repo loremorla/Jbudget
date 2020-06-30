@@ -2,6 +2,7 @@ package it.unicam.cs.pa.jbudget105124.Model.Account;
 
 import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +82,19 @@ public class AccountBasic implements Account {
 
 	@Override
 	public double getBalance() {
+		balance = openingBalance;
+		//amount.set(0.0);
+		/*this.movements.parallelStream()
+				.filter(m->m.getDate().compareTo(LocalDate.now())<=0)
+				.forEach(m->totalAmount+m.getAmount());
+		//this.logger.finest("TotalAmount getter.");  amount.set(m.getAmount()+amount.get())
+		return amount.get();*/
+		for(Movement m : movements){
+			if(m.getDate().compareTo(LocalDate.now())<=0){
+				if(type.equals(AccountType.ASSETS)) balance = balance+m.getRealAmount();
+				else balance = balance-m.getRealAmount();
+			}
+		}
 		return balance;
 	}
 	

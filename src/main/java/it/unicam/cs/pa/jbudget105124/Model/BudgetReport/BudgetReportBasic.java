@@ -1,11 +1,14 @@
 package it.unicam.cs.pa.jbudget105124.Model.BudgetReport;
 
 import com.google.gson.Gson;
+import it.unicam.cs.pa.jbudget105124.Model.Account.AccountType;
 import it.unicam.cs.pa.jbudget105124.Model.Budget.Budget;
 import it.unicam.cs.pa.jbudget105124.Model.Ledger.Ledger;
+import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
 import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,6 +57,17 @@ public class BudgetReportBasic implements BudgetReport {
 	@Override // ???
 	public double getTag(Tag t) {
 		return result.get(t);
+	}
+
+	@Override
+	public double getEffectiveAmount(Tag t){
+		double res = 0.0;
+		for(Movement m : ledger.getMovements()){
+			if(!m.getDate().isAfter(LocalDate.now())){
+				res = res+m.getRealAmount();
+			}
+		}
+		return res;
 	}
 
 	@Override

@@ -35,6 +35,8 @@ public interface Movement extends Utility {
 	AccountType getAccountType();
 	
 	double getAmount();
+
+	double getRealAmount();
 	
 	void setAmount(double amount);
 	

@@ -58,9 +58,9 @@ public class TagSingle implements Tag {
 				.forEach(m->totalAmount+m.getAmount());
 		//this.logger.finest("TotalAmount getter.");  amount.set(m.getAmount()+amount.get())
 		return amount.get();*/
-		for(Movement m : getMovements()){
-			if(m.getDate().compareTo(LocalDate.now())<=0){
-				totalAmount = totalAmount+m.getAmount();
+		for(Movement m : movements){
+			if(!m.getDate().isAfter(LocalDate.now())){
+				totalAmount = totalAmount+m.getRealAmount();
 			}
 		}
 		return totalAmount;

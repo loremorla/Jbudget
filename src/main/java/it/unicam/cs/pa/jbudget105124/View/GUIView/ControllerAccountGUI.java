@@ -49,13 +49,19 @@ public class ControllerAccountGUI implements ControllerFXML {
     @FXML
     public void addAccount(){
         try {
-            if (nameAccount.getText() != null && obAccount.getText() != null && description.getText() != null) {
-                Account account = AccountManager.createAccount(Integer.parseInt(idAccount.getText()),
-                        nameAccount.getText(),description.getText(),Double.parseDouble(obAccount.getText()),
-                        accountType.getValue());
-                controller.addAccount(account);
-                updateAccounts();
+            if(controller.getBudgetReport().getLedger().getSingleAccount(Integer.parseInt(idAccount.getText())) == null) {
+                if (nameAccount.getText() != null && obAccount.getText() != null) {
+                    Account account = AccountManager.createAccount(Integer.parseInt(idAccount.getText()),
+                            nameAccount.getText(), description.getText(), Double.parseDouble(obAccount.getText()),
+                            accountType.getValue());
+                    controller.addAccount(account);
+                    updateAccounts();
+                }
             }
+            else{
+                notificationAccount.setText("Duplicate ID!");
+            }
+
         }catch (Exception e){
             notificationAccount.setText("Operation Failed!");
         }finally {

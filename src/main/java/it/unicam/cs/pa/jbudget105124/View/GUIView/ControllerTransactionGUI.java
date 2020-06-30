@@ -46,11 +46,16 @@ public class ControllerTransactionGUI implements ControllerFXML {
     @FXML
     public void addTransaction(){
         try {
-            if (description.getText() != null && date.getValue()!=null) {
-                Transaction t = TransactionManager.createTransaction(Integer.parseInt(idTransaction.getText()),
-                        description.getText(),date.getValue());
-                controller.addTransaction(t);
-                updateTransactions();
+            if(controller.getBudgetReport().getLedger().getSingleTransaction(Integer.parseInt(idTransaction.getText())) == null) {
+                if (date.getValue() != null) {
+                    Transaction t = TransactionManager.createTransaction(Integer.parseInt(idTransaction.getText()),
+                            description.getText(), date.getValue());
+                    controller.addTransaction(t);
+                    updateTransactions();
+                }
+            }
+            else{
+                notificationTransaction.setText("Duplicate ID!");
             }
         }catch (Exception e){
             notificationTransaction.setText("Operation Failed!");

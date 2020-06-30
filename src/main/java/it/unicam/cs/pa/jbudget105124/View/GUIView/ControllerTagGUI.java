@@ -26,7 +26,6 @@ public class ControllerTagGUI implements ControllerFXML {
     @FXML private TableView<Tag> tagTable;
     @FXML private TableColumn<Tag,Integer> idColumn;
     @FXML private TableColumn<Tag,String> nameColumn;
-    @FXML private TableColumn<Tag,Double> amountColumn;
     private ObservableList<Tag> lTag;
 
     public ControllerTagGUI(Controller controller) {
@@ -42,10 +41,15 @@ public class ControllerTagGUI implements ControllerFXML {
     @FXML
     public void addTag(){
         try {
-            if (nameTag.getText() != null) {
-                Tag tag = TagManager.createTag(nameTag.getText(), Integer.parseInt(idTag.getText()));
-                controller.addTag(tag);
-                updateTags();
+            if(controller.getBudgetReport().getLedger().getSingleTag(Integer.parseInt(idTag.getText())) == null) {
+                if (nameTag.getText() != null) {
+                    Tag tag = TagManager.createTag(nameTag.getText(), Integer.parseInt(idTag.getText()));
+                    controller.addTag(tag);
+                    updateTags();
+                }
+            }
+            else{
+                notificationTag.setText("Duplicate ID!");
             }
         }catch (Exception e){
             notificationTag.setText("Operation Failed!");
@@ -83,8 +87,6 @@ public class ControllerTagGUI implements ControllerFXML {
                 (cellData -> new SimpleObjectProperty<>(cellData.getValue().getID()));
         nameColumn.setCellValueFactory
                 (cellData -> new SimpleObjectProperty<>(cellData.getValue().getName()));
-        amountColumn.setCellValueFactory
-                (cellData -> new SimpleObjectProperty<>(cellData.getValue().getTotalAmount()));
         tagTable.refresh();
     }
 

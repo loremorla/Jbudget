@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,39 +17,41 @@
    <children>
       <ButtonBar>
         <buttons>
+            <Button mnemonicParsing="false" onAction="#refreshBudget" text="REFRESH" />
             <Button mnemonicParsing="false" onAction="#addTag" text="ADD" />
             <Button mnemonicParsing="false" text="CLEAR" />
-          <Button mnemonicParsing="false" text="delete" />
+          <Button mnemonicParsing="false" text="DELETE" />
         </buttons>
       </ButtonBar>
       <BorderPane prefHeight="379.0" prefWidth="600.0">
          <bottom>
-            <Label fx:id="notification" text="Label" BorderPane.alignment="CENTER" />
+            <Label fx:id="notificationBudget" text="Label" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <TableView BorderPane.alignment="CENTER">
+            <TableView fx:id="budgetTable" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="114.0" text="NAME" />
-                <TableColumn prefWidth="210.0" text="ESTIMATED AMOUNT" />
-                  <TableColumn prefWidth="275.0" text="REAL AMOUNT" />
+                <TableColumn fx:id="tagColumn" prefWidth="75.0" text="TAG" />
+                <TableColumn fx:id="estAmountColumn" prefWidth="162.0" text="ESTIMATED AMOUNT" />
+                  <TableColumn fx:id="realAmountColumn" prefWidth="182.0" text="REAL AMOUNT" />
+                  <TableColumn fx:id="totalColumn" prefWidth="180.0" text="TOTAL" />
               </columns>
             </TableView>
          </center>
          <top>
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="33.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="129.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="55.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="136.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="227.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField promptText="estimated amount" GridPane.columnIndex="2" />
-                  <TextField fx:id="idTag" promptText="id tag" />
+                  <ChoiceBox fx:id="Tag" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="estimatedAmount" promptText="estimated amount" GridPane.columnIndex="3" />
                </children>
             </GridPane>
          </top>

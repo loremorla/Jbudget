@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -32,21 +33,23 @@
       </MenuBar>
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
+            <Button mnemonicParsing="false" text="Save" />
           <Button mnemonicParsing="false" onAction="#accountInterfaces" text="ACCOUNT" />
             <Button mnemonicParsing="false" onAction="#tagInterface" text="TAG" />
             <Button mnemonicParsing="false" onAction="#transactionInterface" text="TRANSACTION" />
             <Button mnemonicParsing="false" onAction="#budgetInterface" text="BUDGET" />
+            <Button mnemonicParsing="false" onAction="#refreshTransaction" text="REFRESH" />
         </buttons>
       </ButtonBar>
       <BorderPane prefHeight="380.0" prefWidth="600.0">
          <center>
             <TableView fx:id="transactionsTable" prefHeight="397.0" prefWidth="600.0" BorderPane.alignment="CENTER">
               <columns>
-                  <TableColumn fx:id="idTransaction" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="dateTransaction" prefWidth="109.0" text="DATE" />
-                  <TableColumn fx:id="stateTransaction" prefWidth="110.0" text="STATE" />
-                <TableColumn fx:id="amountTransaction" prefWidth="112.0" text="AMOUNT" />
-                  <TableColumn fx:id="descriptionTransaction" prefWidth="194.0" text="DESCRIPTION" />
+                  <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="dateColumn" prefWidth="109.0" text="DATE" />
+                  <TableColumn fx:id="stateColumn" prefWidth="110.0" text="STATE" />
+                <TableColumn fx:id="amountColumn" prefWidth="112.0" text="AMOUNT" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="194.0" text="DESCRIPTION" />
               </columns>
             </TableView>
          </center>
@@ -68,15 +71,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <RadioButton mnemonicParsing="false" text="TAG" GridPane.columnIndex="1" />
-                  <ChoiceBox prefHeight="25.0" prefWidth="91.0" GridPane.columnIndex="2" />
-                  <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" text="DATE" GridPane.columnIndex="4" />
-                  <DatePicker GridPane.columnIndex="5" />
-                  <DatePicker GridPane.columnIndex="6" />
+                  <RadioButton fx:id="tagButton" mnemonicParsing="false" text="TAG" GridPane.columnIndex="1" />
+                  <ChoiceBox fx:id="tagChoice" prefHeight="25.0" prefWidth="91.0" GridPane.columnIndex="2" />
+                  <RadioButton fx:id="dateButton" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" text="DATE" GridPane.columnIndex="4" />
+                  <DatePicker fx:id="dateFrom" GridPane.columnIndex="5" />
+                  <DatePicker fx:id="dateTo" GridPane.columnIndex="6" />
                   <Button mnemonicParsing="false" onAction="#schedule" prefHeight="25.0" prefWidth="38.0" text="OK" GridPane.columnIndex="8" />
                </children>
             </GridPane>
          </top>
+         <bottom>
+            <Label fx:id="notificationHome" text="Label" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
    </children>
 </VBox>

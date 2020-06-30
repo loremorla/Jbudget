@@ -73,6 +73,11 @@ public class MovementBasic implements Movement {
 
 	@Override
 	public double getAmount() {
+		return amount;
+	}
+
+	@Override
+	public double getRealAmount() {
 		if(movementType.equals(MovementType.DEBIT)){
 			return -amount;
 		}

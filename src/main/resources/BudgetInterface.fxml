@@ -19,8 +19,8 @@
         <buttons>
             <Button mnemonicParsing="false" onAction="#refreshBudget" text="REFRESH" />
             <Button mnemonicParsing="false" onAction="#addTag" text="ADD" />
-            <Button mnemonicParsing="false" text="CLEAR" />
-          <Button mnemonicParsing="false" text="DELETE" />
+            <Button mnemonicParsing="false" onAction="#clearBudget" text="CLEAR" />
+          <Button mnemonicParsing="false" onAction="#deleteBudget" text="DELETE" />
         </buttons>
       </ButtonBar>
       <BorderPane prefHeight="379.0" prefWidth="600.0">

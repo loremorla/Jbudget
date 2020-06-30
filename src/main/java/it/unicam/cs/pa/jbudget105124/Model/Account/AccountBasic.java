@@ -16,9 +16,9 @@ public class AccountBasic implements Account {
 	private double openingBalance;
 	private List<Movement> movements;
 	
-	public AccountBasic() {
+	/*public AccountBasic() {
 		this.movements = new ArrayList<>();
-	}
+	}*/
 	
 	public AccountBasic(int ID, String name, String description, double ob, AccountType at){
 		this.ID = ID;

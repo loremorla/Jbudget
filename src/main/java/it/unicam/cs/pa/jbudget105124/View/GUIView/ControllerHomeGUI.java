@@ -2,6 +2,7 @@ package it.unicam.cs.pa.jbudget105124.View.GUIView;
 
 import it.unicam.cs.pa.jbudget105124.Controller.Controller;
 import it.unicam.cs.pa.jbudget105124.Controller.ControllerManager;
+import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
 import it.unicam.cs.pa.jbudget105124.Model.Store.TxtReader;
 import it.unicam.cs.pa.jbudget105124.Model.Store.TxtWriter;
 import it.unicam.cs.pa.jbudget105124.Model.Store.Writer;
@@ -90,6 +91,19 @@ public class ControllerHomeGUI implements ControllerFXML {
         transactionsTable.refresh();
     }
 
+    public void checkTransaction(){
+        for(Transaction t : controller.getBudgetReport().getLedger().getTransactions()){
+            if(t.getState() == false){
+                if(!t.getDate().isAfter(LocalDate.now())) {
+                    t.completed();
+                    for (Movement m : t.getMovements()) {
+                        controller.addMovement(m);
+                    }
+                }
+            }
+        }
+    }
+
     private void updateTransactions(){
         lScheduledTr.removeAll(lScheduledTr);
         lScheduledTr.addAll(controller.getTransactions());
@@ -139,6 +153,8 @@ public class ControllerHomeGUI implements ControllerFXML {
         try {
             String path = createFileChooser().showOpenDialog(new Stage()).getAbsolutePath();
             this.controller.read(new TxtReader(path));
+            refreshTransaction();
+            checkTransaction();
         } catch (Exception e) {
 
         }

@@ -1,6 +1,7 @@
 package it.unicam.cs.pa.jbudget105124.View.GUIView;
 
 import it.unicam.cs.pa.jbudget105124.Controller.Controller;
+import it.unicam.cs.pa.jbudget105124.Model.Account.Account;
 import it.unicam.cs.pa.jbudget105124.Model.Budget.Budget;
 import it.unicam.cs.pa.jbudget105124.Model.Budget.BudgetManager;
 import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReport;
@@ -60,6 +61,21 @@ public class ControllerBudgetGUI implements ControllerFXML {
         }finally {
             estimatedAmount.clear();
             //idTag.clear();
+        }
+    }
+
+    @FXML
+    public void clearBudget(){
+        estimatedAmount.clear();
+        //accountType.clear();
+    }
+
+    @FXML
+    public void deleteBudget(){
+        Tag tag = budgetTable.getSelectionModel().getSelectedItem().getKey();
+        if(!budgetTable.getItems().isEmpty() & tag != null) {
+            controller.removeBudgetTag(tag);
+            updateBudget();
         }
     }
 

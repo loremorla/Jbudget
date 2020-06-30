@@ -61,6 +61,7 @@ public class SimpleController implements Controller {
 		m.getTransaction().addMovement(m);
 		m.getTag().addMovement(m);
 		m.getAccount().addMovement(m);
+		budgetReport.getLedger().addMovement(m);
 	}
 
 	@Override
@@ -72,6 +73,7 @@ public class SimpleController implements Controller {
 		}*/
 		//m.getTag().removeMovement(m);
 		m.getAccount().removeMovement(m);
+		budgetReport.getLedger().removeMovements(m);
 	}
 
 	@Override

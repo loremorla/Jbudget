@@ -116,8 +116,8 @@ public class ControllerHomeGUI implements ControllerFXML {
     @FXML
     public void newReport() {
         try {
-            String path = createFileChooser().showSaveDialog(new Stage()).getAbsolutePath();
             clear();
+            String path = createFileChooser().showSaveDialog(new Stage()).getAbsolutePath();
             this.writer = new TxtWriter(path);
             this.controller.write(this.writer);
         } catch (Exception e) {
@@ -163,11 +163,11 @@ public class ControllerHomeGUI implements ControllerFXML {
         return fileChooser;
     }
 
-    private void save(){
+    public void save(){
         try {
             this.controller.write(writer);
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 }

@@ -33,7 +33,7 @@
       </MenuBar>
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
-            <Button mnemonicParsing="false" text="Save" />
+            <Button mnemonicParsing="false" onAction="#save" text="Save" />
           <Button mnemonicParsing="false" onAction="#accountInterfaces" text="ACCOUNT" />
             <Button mnemonicParsing="false" onAction="#tagInterface" text="TAG" />
             <Button mnemonicParsing="false" onAction="#transactionInterface" text="TRANSACTION" />

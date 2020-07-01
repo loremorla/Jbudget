@@ -152,6 +152,7 @@ public class ControllerHomeGUI implements ControllerFXML {
         try {
             String path = createFileChooser().showOpenDialog(new Stage()).getAbsolutePath();
             this.controller.read(new TxtReader(path));
+            this.writer = new TxtWriter(path);
             refreshTransaction();
             //checkTransaction();
         } catch (Exception e) {

@@ -75,7 +75,8 @@ public class ControllerBudgetGUI implements ControllerFXML {
         Tag tag = budgetTable.getSelectionModel().getSelectedItem().getKey();
         if(!budgetTable.getItems().isEmpty() & tag != null) {
             controller.removeBudgetTag(tag);
-            updateBudget();
+            refreshBudget();
+            //updateBudget();
         }
     }
 

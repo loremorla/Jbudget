@@ -46,7 +46,8 @@ public class ControllerTransactionGUI implements ControllerFXML {
     @FXML
     public void addTransaction(){
         try {
-            if(controller.getBudgetReport().getLedger().getSingleTransaction(Integer.parseInt(idTransaction.getText())) == null) {
+            if(controller.getBudgetReport().getLedger().getSingleTransaction(Integer.parseInt(idTransaction.getText())) == null
+                && Integer.parseInt(idTransaction.getText()) > 0) {
                 if (date.getValue() != null) {
                     Transaction t = TransactionManager.createTransaction(Integer.parseInt(idTransaction.getText()),
                             description.getText(), date.getValue());

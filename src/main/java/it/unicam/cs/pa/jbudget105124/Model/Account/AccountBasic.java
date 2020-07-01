@@ -90,7 +90,7 @@ public class AccountBasic implements Account {
 		//this.logger.finest("TotalAmount getter.");  amount.set(m.getAmount()+amount.get())
 		return amount.get();*/
 		for(Movement m : movements){
-			if(m.getDate().compareTo(LocalDate.now())<=0){
+			if(!m.getDate().isAfter(LocalDate.now())){
 				if(type.equals(AccountType.ASSETS)) balance = balance+m.getRealAmount();
 				else balance = balance-m.getRealAmount();
 			}
@@ -133,12 +133,10 @@ public class AccountBasic implements Account {
 	public void removeMovement(Movement m) {
 		movements.remove(m);
 	}
-	/*@Override
-	public List<Movement> getMovements(Predicate<Movement> p) {
-		return null;
-	}*/
+
+	@Override
 	public String toString(){
-		return ID+"_"+name;
+		return ID+" "+name;
 	}
 
 }

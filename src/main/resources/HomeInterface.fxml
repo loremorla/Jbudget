@@ -45,11 +45,10 @@
          <center>
             <TableView fx:id="transactionsTable" prefHeight="397.0" prefWidth="600.0" BorderPane.alignment="CENTER">
               <columns>
-                  <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="dateColumn" prefWidth="109.0" text="DATE" />
-                  <TableColumn fx:id="stateColumn" prefWidth="110.0" text="STATE" />
-                <TableColumn fx:id="amountColumn" prefWidth="112.0" text="AMOUNT" />
-                  <TableColumn fx:id="descriptionColumn" prefWidth="194.0" text="DESCRIPTION" />
+                  <TableColumn fx:id="idColumn" prefWidth="91.0" text="ID" />
+                <TableColumn fx:id="dateColumn" prefWidth="138.0" text="DATE" />
+                <TableColumn fx:id="amountColumn" prefWidth="127.0" text="AMOUNT" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="258.0" text="DESCRIPTION" />
               </columns>
             </TableView>
          </center>
@@ -81,7 +80,7 @@
             </GridPane>
          </top>
          <bottom>
-            <Label fx:id="notificationHome" text="Label" BorderPane.alignment="CENTER" />
+            <Label fx:id="notificationHome" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>

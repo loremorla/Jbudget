@@ -6,13 +6,15 @@ package it.unicam.cs.pa.jbudget105124;
 import it.unicam.cs.pa.jbudget105124.View.GUIView.GUIViewStart;
 import javafx.application.Application;
 
+import java.util.logging.Logger;
+
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+    private final static Logger logger = Logger.getGlobal();
 
     public static void main(String[] args) {
+        logger.info("App started");
         Application.launch(GUIViewStart.class);
-        System.out.println(new App().getGreeting());
+        logger.info("App closed");
+        //System.out.println(new App().getGreeting());
     }
 }

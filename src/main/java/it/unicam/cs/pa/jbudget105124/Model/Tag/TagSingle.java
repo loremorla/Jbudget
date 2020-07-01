@@ -12,10 +12,7 @@ public class TagSingle implements Tag {
 	private String name;
 	private double totalAmount;
 	private List<Movement> movements;
-	
-	public TagSingle() {
-	
-	}
+
 	
 	public TagSingle(String name,int ID) {
 		this.name = name;
@@ -76,8 +73,9 @@ public class TagSingle implements Tag {
 		movements.remove(m);
 	}
 
+	@Override
 	public String toString(){
-		return ID+"_"+name;
+		return ID+" "+name;
 	}
 
 }

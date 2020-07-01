@@ -13,7 +13,7 @@ public class TransactionBasic implements Transaction{
 	private List<Tag> tags;
 	private LocalDate date;
 	private List<Movement> movements;
-	private boolean state;
+	//private boolean state;
 	private double amount;
 	private String description;
 	
@@ -21,7 +21,7 @@ public class TransactionBasic implements Transaction{
 		this.ID = ID;
 		movements = new ArrayList<>();
 		tags = new ArrayList<>();
-		this.state = false;
+		//this.state = false;
 		//this.amount = 0.0;
 		this.date = date;//LocalDate.now();
 		this.description = description;
@@ -88,7 +88,7 @@ public class TransactionBasic implements Transaction{
 		this.description = description;
 	}
 	
-	@Override
+	/*@Override
 	public boolean getState() {
 		return state;
 	}
@@ -101,7 +101,7 @@ public class TransactionBasic implements Transaction{
 	@Override
 	public void completed() {
 		state = true;
-	}
+	}*/
 	
 	@Override
 	public void addAmount(double amount) {

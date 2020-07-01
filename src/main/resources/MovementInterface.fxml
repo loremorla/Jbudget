@@ -17,15 +17,14 @@
    <children>
       <ButtonBar>
         <buttons>
-            <Button mnemonicParsing="false" onAction="#refreshMovement" text="REFRESH" />
             <Button mnemonicParsing="false" onAction="#addMovement" text="ADD" />
             <Button mnemonicParsing="false" onAction="#clearTransaction" text="CLEAR" />
-          <Button mnemonicParsing="false" onAction="#deleteTransaction" text="delete" />
+          <Button mnemonicParsing="false" onAction="#deleteTransaction" text="DELETE" />
         </buttons>
       </ButtonBar>
       <BorderPane prefHeight="379.0" prefWidth="600.0">
          <bottom>
-            <Label fx:id="notificationMovement" text="Label" BorderPane.alignment="CENTER" />
+            <Label fx:id="notificationMovement" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <TableView fx:id="movementsTable" BorderPane.alignment="CENTER">

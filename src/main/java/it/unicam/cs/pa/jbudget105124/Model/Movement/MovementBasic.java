@@ -120,10 +120,10 @@ public class MovementBasic implements Movement {
 		movementType = mt;
 	}
 
-	@Override
+	/*@Override
 	public AccountType getAccountType() {
 		return accountType;
-	}
+	}*/
 
 	@Override
 	public Transaction getTransaction() {

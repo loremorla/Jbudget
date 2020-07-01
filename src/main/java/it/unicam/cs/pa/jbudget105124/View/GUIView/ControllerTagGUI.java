@@ -41,7 +41,8 @@ public class ControllerTagGUI implements ControllerFXML {
     @FXML
     public void addTag(){
         try {
-            if(controller.getBudgetReport().getLedger().getSingleTag(Integer.parseInt(idTag.getText())) == null) {
+            if(controller.getBudgetReport().getLedger().getSingleTag(Integer.parseInt(idTag.getText())) == null
+                && Integer.parseInt(idTag.getText()) > 0) {
                 if (nameTag.getText() != null) {
                     Tag tag = TagManager.createTag(nameTag.getText(), Integer.parseInt(idTag.getText()));
                     controller.addTag(tag);
@@ -49,7 +50,7 @@ public class ControllerTagGUI implements ControllerFXML {
                 }
             }
             else{
-                notificationTag.setText("Duplicate ID!");
+                notificationTag.setText("Error ID!");
             }
         }catch (Exception e){
             notificationTag.setText("Operation Failed!");

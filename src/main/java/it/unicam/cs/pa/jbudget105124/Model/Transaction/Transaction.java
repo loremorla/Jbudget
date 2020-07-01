@@ -39,11 +39,11 @@ public interface Transaction extends Utility {
 
 	void setDescription(String description);
 	
-	boolean getState();
+	//boolean getState();
 	
-	void setState(boolean state);
+	//void setState(boolean state);
 
-	void completed();
+	//void completed();
 	
 	void addAmount(double amount);
 	

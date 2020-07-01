@@ -23,7 +23,7 @@
       </ButtonBar>
       <BorderPane prefHeight="379.0" prefWidth="600.0">
          <bottom>
-            <Label fx:id="notificationTag" text="Label" BorderPane.alignment="CENTER" />
+            <Label fx:id="notificationTag" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <TableView fx:id="tagTable" BorderPane.alignment="CENTER">

@@ -117,4 +117,11 @@ public interface Account extends Utility {
 	 * @param m movimento da rimuovere
 	 */
 	void removeMovement(Movement m);
+
+	/**
+	 * Metodo per ritornare l'oggetto in forma
+	 * di stringa
+	 * @return stringa dell'oggetto
+	 */
+	String toString();
 }

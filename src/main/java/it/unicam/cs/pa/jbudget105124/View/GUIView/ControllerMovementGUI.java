@@ -62,7 +62,8 @@ public class ControllerMovementGUI implements ControllerFXML {
     @FXML
     public void addMovement(){
         try {
-            if(controller.getBudgetReport().getLedger().getSingleMovement(Integer.parseInt(idMovement.getText()),IDtransaction) == null) {
+            if(controller.getBudgetReport().getLedger().getSingleMovement(Integer.parseInt(idMovement.getText()),IDtransaction) == null
+                && Integer.parseInt(idMovement.getText()) > 0) {
                 if (amount.getText() != null && accountName.getValue() != null &&
                         movType.getValue() != null && tagName.getValue() != null) {
                     Movement m = MovementManager.createMovement(Integer.parseInt(idMovement.getText()),
@@ -73,7 +74,7 @@ public class ControllerMovementGUI implements ControllerFXML {
                 }
             }
             else{
-                notificationMovement.setText("Duplicate ID!");
+                notificationMovement.setText("Error ID!");
             }
         }catch (Exception e){
             notificationMovement.setText("Operation Failed!");
@@ -91,11 +92,6 @@ public class ControllerMovementGUI implements ControllerFXML {
         amount.clear();
         description.clear();
         //date.clear();
-    }
-
-    @FXML
-    public void refreshMovement(){
-        updateMovements();
     }
 
     @FXML

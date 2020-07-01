@@ -23,4 +23,6 @@ public interface Tag extends Utility {
 
 	void removeMovement(Movement m);
 
+	String toString();
+
 }

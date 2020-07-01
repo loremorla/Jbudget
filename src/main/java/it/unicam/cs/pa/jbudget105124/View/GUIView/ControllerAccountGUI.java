@@ -49,8 +49,9 @@ public class ControllerAccountGUI implements ControllerFXML {
     @FXML
     public void addAccount(){
         try {
-            if(controller.getBudgetReport().getLedger().getSingleAccount(Integer.parseInt(idAccount.getText())) == null) {
-                if (nameAccount.getText() != null && obAccount.getText() != null) {
+            if(controller.getBudgetReport().getLedger().getSingleAccount(Integer.parseInt(idAccount.getText())) == null
+                && Integer.parseInt(idAccount.getText()) > 0 ) {
+                if (nameAccount.getText() != null && obAccount.getText() != null && accountType.getValue() != null) {
                     Account account = AccountManager.createAccount(Integer.parseInt(idAccount.getText()),
                             nameAccount.getText(), description.getText(), Double.parseDouble(obAccount.getText()),
                             accountType.getValue());
@@ -59,7 +60,7 @@ public class ControllerAccountGUI implements ControllerFXML {
                 }
             }
             else{
-                notificationAccount.setText("Duplicate ID!");
+                notificationAccount.setText("Error ID!");
             }
 
         }catch (Exception e){
@@ -82,10 +83,6 @@ public class ControllerAccountGUI implements ControllerFXML {
         //accountType.clear();
     }
 
-    @FXML
-    public void refreshAccount(){
-        updateAccounts();
-    }
 
     @FXML
     public void deleteAccount(){

@@ -17,6 +17,7 @@ public class BudgetTag implements Budget{
 
 	@Override
 	public void add(Tag t,double amount){
+		//if(!tags.contains(t)) tags.add(t);
 		if(budget.containsKey(t))
 			budget.remove(t);
 		budget.put(t,amount);
@@ -25,7 +26,7 @@ public class BudgetTag implements Budget{
 	@Override
 	public void remove(Tag t){
 		budget.remove(t);
-		tags.remove(t);
+		//tags.remove(t);
 	}
 
 	@Override

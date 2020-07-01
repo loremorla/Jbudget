@@ -41,7 +41,6 @@ public class ControllerHomeGUI implements ControllerFXML {
     @FXML private TableView<Transaction> transactionsTable;
     @FXML private TableColumn<Transaction,Integer> idColumn;
     @FXML private TableColumn<Transaction, LocalDate> dateColumn;
-    @FXML private TableColumn<Transaction,Boolean> stateColumn;
     @FXML private TableColumn<Transaction,Double> amountColumn;
     @FXML private TableColumn<Transaction,String> descriptionColumn;
     private ObservableList<Transaction> lScheduledTr;
@@ -91,18 +90,18 @@ public class ControllerHomeGUI implements ControllerFXML {
         transactionsTable.refresh();
     }
 
-    public void checkTransaction(){
+    /*public void checkTransaction(){
         for(Transaction t : controller.getBudgetReport().getLedger().getTransactions()){
             if(t.getState() == false){
                 if(!t.getDate().isAfter(LocalDate.now())) {
                     t.completed();
                     for (Movement m : t.getMovements()) {
-                        controller.addMovement(m);
+                        controller.getBudgetReport().getLedger().addMovement(m); // da modificare
                     }
                 }
             }
         }
-    }
+    }*/
 
     private void updateTransactions(){
         lScheduledTr.removeAll(lScheduledTr);
@@ -154,7 +153,7 @@ public class ControllerHomeGUI implements ControllerFXML {
             String path = createFileChooser().showOpenDialog(new Stage()).getAbsolutePath();
             this.controller.read(new TxtReader(path));
             refreshTransaction();
-            checkTransaction();
+            //checkTransaction();
         } catch (Exception e) {
 
         }

@@ -107,7 +107,13 @@ public class SimpleController implements Controller {
 	@Override
 	public void removeTransaction(Transaction t) {
 		//this.budgetReport.getLedger().removeTransaction(transaction);
+		for(Movement m : t.getMovements()){
+			m.getTag().removeMovement(m);
+			m.getAccount().removeMovement(m);
+			budgetReport.getLedger().removeMovements(m);
+		}
 		budgetReport.getLedger().removeTransaction(t);
+
 	}
 
 	@Override
@@ -145,12 +151,12 @@ public class SimpleController implements Controller {
 
 	@Override
 	public List<Transaction> scheduledTransactionsDate(LocalDate from, LocalDate to) {
-		if(from.isBefore(to)) {
+		if(!from.isAfter(to)) {
 			List<Transaction> stransactions = new ArrayList<>();
 			budgetReport.getLedger().getTransactions()
 					.stream()
-					.filter(t -> t.getDate().isAfter(from))
-					.filter(t -> t.getDate().isBefore(to))
+					.filter(t -> !t.getDate().isBefore(from))
+					.filter(t -> !t.getDate().isAfter(to))
 					.forEach(t -> stransactions.add(t));
 			//this.logger.fine("Transactions scheduled from :["+start+"] to ["+stop+"]");
 			return stransactions;

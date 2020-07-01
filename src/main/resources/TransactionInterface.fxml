@@ -20,21 +20,21 @@
             <Button mnemonicParsing="false" onAction="#refreshTransaction" text="REFRESH" />
             <Button mnemonicParsing="false" onAction="#addTransaction" text="ADD" />
             <Button mnemonicParsing="false" onAction="#clearTransaction" text="CLEAR" />
-            <Button mnemonicParsing="false" onAction="#deleteTransaction" text="delete" />
+            <Button mnemonicParsing="false" onAction="#deleteTransaction" text="DELETE" />
           <Button mnemonicParsing="false" onAction="#movementInterface" text="MOVEMENT" />
         </buttons>
       </ButtonBar>
       <BorderPane prefHeight="379.0" prefWidth="600.0">
          <bottom>
-            <Label fx:id="notificationTransaction" text="Label" BorderPane.alignment="CENTER" />
+            <Label fx:id="notificationTransaction" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <TableView fx:id="transactionsTable" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="dateColumn" prefWidth="126.0" text="DATE" />
-                  <TableColumn fx:id="amountColumn" prefWidth="108.0" text="AMOUNT" />
-                  <TableColumn fx:id="descriptionColumn" prefWidth="290.0" text="DESCRIPTION" />
+                  <TableColumn fx:id="amountColumn" prefWidth="151.0" text="AMOUNT" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="247.0" text="DESCRIPTION" />
               </columns>
             </TableView>
          </center>

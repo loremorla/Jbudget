@@ -6,15 +6,33 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+/**
+ * Classe che ha il compito di scrivere su un file txt.
+ */
 public class TxtWriter implements Writer{
 
+    /**
+     * Oggetto per la scrittura
+     */
     private ObjectOutputStream out;
+    /**
+     * path del file
+     */
     private final String path;
 
-    public TxtWriter(String path) throws IOException {
+    /**
+     * Costruttore di TxtWriter
+     * @param path
+     */
+    public TxtWriter(String path){
         this.path = path;
     }
 
+    /**
+     * Metodo per scrivere un Budget Report
+     * @param object
+     * @throws IOException
+     */
     @Override
     public void write(BudgetReport object) throws IOException {
         out = new ObjectOutputStream(new FileOutputStream(path));
@@ -22,6 +40,10 @@ public class TxtWriter implements Writer{
         out.flush();
     }
 
+    /**
+     * Metodo per chiudere le variabili istanziate per scrivere.
+     * @throws IOException
+     */
     @Override
     public void close() throws IOException {
         out.close();

@@ -27,7 +27,7 @@
             <Label fx:id="notificationAccount" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <TableView fx:id="accountTable" BorderPane.alignment="CENTER">
+            <TableView fx:id="accountTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="nameColumn" prefWidth="105.0" text="NAME" />

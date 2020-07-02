@@ -8,8 +8,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Interfaccia che sarà implementata dalle classi che hanno il compito di fare da controllo
+ * della GUI View.
+ */
 public interface ControllerFXML extends Initializable {
 
+    /**
+     * Metodo per aprire una nuova finestra
+     * @param title
+     * @param fileFXML
+     * @param controllerFXML
+     */
     default void openWindow(String title, String fileFXML,ControllerFXML controllerFXML){
         try {
             Stage stage = new Stage();

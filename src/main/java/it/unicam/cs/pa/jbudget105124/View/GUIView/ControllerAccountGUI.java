@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -70,7 +69,6 @@ public class ControllerAccountGUI implements ControllerFXML {
             nameAccount.clear();
             description.clear();
             obAccount.clear();
-            //accountType.clear();
         }
     }
 
@@ -80,7 +78,6 @@ public class ControllerAccountGUI implements ControllerFXML {
         nameAccount.clear();
         description.clear();
         obAccount.clear();
-        //accountType.clear();
     }
 
 

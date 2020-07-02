@@ -15,6 +15,5 @@ public class App {
         logger.info("App started");
         Application.launch(GUIViewStart.class);
         logger.info("App closed");
-        //System.out.println(new App().getGreeting());
     }
 }

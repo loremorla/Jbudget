@@ -2,11 +2,8 @@ package it.unicam.cs.pa.jbudget105124.Controller;
 
 import it.unicam.cs.pa.jbudget105124.Model.Account.Account;
 import it.unicam.cs.pa.jbudget105124.Model.Budget.BudgetManager;
-import it.unicam.cs.pa.jbudget105124.Model.Budget.BudgetTag;
 import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReport;
-import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReportBasic;
 import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReportManager;
-import it.unicam.cs.pa.jbudget105124.Model.Ledger.LedgerBasic;
 import it.unicam.cs.pa.jbudget105124.Model.Ledger.LedgerManager;
 import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
 import it.unicam.cs.pa.jbudget105124.Model.Store.Reader;
@@ -34,7 +31,7 @@ public class SimpleController implements Controller {
 	 * Costruttore della classe SimpleController
 	 */
 	public SimpleController(){
-		budgetReport = new BudgetReportBasic(new BudgetTag(),new LedgerBasic());
+		budgetReport = BudgetReportManager.createReport(LedgerManager.createLedger(), BudgetManager.createBudget());
 	}
 
 	/**
@@ -275,6 +272,6 @@ public class SimpleController implements Controller {
 	 */
 	@Override
 	public void resetReport() {
-		this.budgetReport = BudgetReportManager.createReport(LedgerManager.createLedger(), BudgetManager.createBudget());
+		budgetReport = BudgetReportManager.createReport(LedgerManager.createLedger(), BudgetManager.createBudget());
 	}
 }

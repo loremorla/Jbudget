@@ -90,20 +90,8 @@ public class ControllerHomeGUI implements ControllerFXML {
         transactionsTable.refresh();
     }
 
-    /*public void checkTransaction(){
-        for(Transaction t : controller.getBudgetReport().getLedger().getTransactions()){
-            if(t.getState() == false){
-                if(!t.getDate().isAfter(LocalDate.now())) {
-                    t.completed();
-                    for (Movement m : t.getMovements()) {
-                        controller.getBudgetReport().getLedger().addMovement(m); // da modificare
-                    }
-                }
-            }
-        }
-    }*/
-
     private void updateTransactions(){
+        notificationHome.setText(" ");
         lScheduledTr.removeAll(lScheduledTr);
         lScheduledTr.addAll(controller.getTransactions());
         transactionsTable.setItems(lScheduledTr);

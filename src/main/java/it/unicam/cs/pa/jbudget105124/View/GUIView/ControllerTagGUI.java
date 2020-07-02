@@ -1,8 +1,6 @@
 package it.unicam.cs.pa.jbudget105124.View.GUIView;
 
 import it.unicam.cs.pa.jbudget105124.Controller.Controller;
-import it.unicam.cs.pa.jbudget105124.Model.Ledger.Ledger;
-import it.unicam.cs.pa.jbudget105124.Model.Ledger.LedgerBasic;
 import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
 import it.unicam.cs.pa.jbudget105124.Model.Tag.TagManager;
 import javafx.beans.property.SimpleObjectProperty;
@@ -81,6 +79,7 @@ public class ControllerTagGUI implements ControllerFXML {
     }
 
     private void updateTags(){
+        notificationTag.setText(" ");
         lTag.removeAll(lTag);
         lTag.addAll(controller.getTags());
         tagTable.setItems(lTag);

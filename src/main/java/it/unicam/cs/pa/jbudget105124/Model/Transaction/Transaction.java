@@ -7,47 +7,60 @@ import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Interfaccia che sarà implementata dalle classi che hanno il compito di gestire una transazione.
+ * Una transazione rappresenta un gruppo di movimenti ai quali eridita la data. L'insieme dei Tag
+ * della transazione è dato dall'insieme di tutti i tag dei suoi movimenti
+ */
 public interface Transaction extends Utility {
-	
+
+	/**
+	 * Metodo per ritornare l'ID della transazione
+	 * @return
+	 */
 	int getID();
-	
-	void setID(int ID);
-	
+
+	/**
+	 * Metodo per ritornare la lista di movimenti della transazione
+	 * @return lista di movimenti da ritornare
+	 */
 	List<Movement> getMovements();
-	
-	void setMovements(List<Movement> ms);
-	
+
+	/**
+	 * Metodo per aggiungere un movimento dalla lista di
+	 * movimenti della transazione
+	 * @param m movimento da aggiungere
+	 */
 	void addMovement(Movement m);
 
-	void addMovements(List<Movement> ms);
-	
+	/**
+	 * Metodo per rimuovere un movimento dalla lista di
+	 * movimenti della transazione
+	 * @param m movimento da rimuovere
+	 */
 	void removeMovement(Movement m);
-	
-	List<Tag> getTags();
-	
-	//void setTags(List<Tag> t);
-	
-	//void addTag(Tag t);
-	
-	//void removeTag(Tag t);
-	
-	LocalDate getDate();
-	
-	void setDate(LocalDate date);
 
+	/**
+	 * Metodo per ritornare la lista di tag
+	 * @return lista di tag da ritornare
+	 */
+	List<Tag> getTags();
+
+	/**
+	 * Metodo per ritornare la date della transazione
+	 * @return data da ritornare
+	 */
+	LocalDate getDate();
+
+	/**
+	 * Metodo per ritornare la descrizione della transazione
+	 * @return descrizione da ritornare
+	 */
 	String getDescription();
 
-	void setDescription(String description);
-	
-	//boolean getState();
-	
-	//void setState(boolean state);
-
-	//void completed();
-	
-	void addAmount(double amount);
-	
-	void decrementAmount(double amount);
-	
+	/**
+	 * Metodo per ritornare l'amount totale della transazione
+	 * @return amount da ritornare
+	 */
 	double getTotalAmount();
 }

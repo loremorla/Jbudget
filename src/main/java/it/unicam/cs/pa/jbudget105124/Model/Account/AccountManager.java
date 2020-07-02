@@ -7,6 +7,11 @@ public interface AccountManager {
 
     /**
      * Metodo per generare un AccountBasic.
+     * @param ID
+     * @param name
+     * @param description
+     * @param ob
+     * @param at
      * @return AccountBasic generato.
      */
     static Account createAccount(int ID,String name,String description,double ob,AccountType at){

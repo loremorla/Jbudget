@@ -1,7 +1,6 @@
 package it.unicam.cs.pa.jbudget105124.Model.Account;
 
 import it.unicam.cs.pa.jbudget105124.Model.Movement.Movement;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +14,6 @@ public class AccountBasic implements Account {
 	private double balance;
 	private double openingBalance;
 	private List<Movement> movements;
-	
-	/*public AccountBasic() {
-		this.movements = new ArrayList<>();
-	}*/
 	
 	public AccountBasic(int ID, String name, String description, double ob, AccountType at){
 		this.ID = ID;
@@ -34,20 +29,10 @@ public class AccountBasic implements Account {
 	public String getName() {
 		return name;
 	}
-	
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	@Override
 	public String getDescription() {
 		return description;
-	}
-	
-	@Override
-	public void setDescription(String d) {
-		description = d;
 	}
 
 	@Override
@@ -56,39 +41,18 @@ public class AccountBasic implements Account {
 	}
 	
 	@Override
-	public void setID(int ID) {
-		this.ID = ID;
-	}
-	
-	@Override
 	public AccountType getAccountType() {
 		return type;
-	}
-	
-	@Override
-	public void setAccountType(AccountType at) {
-		type = at;
 	}
 	
 	@Override
 	public double getOpeningBalance() {
 		return openingBalance;
 	}
-	
-	@Override
-	public void setOpeningBalance(double ob) {
-		openingBalance = ob;
-	}
 
 	@Override
 	public double getBalance() {
 		balance = openingBalance;
-		//amount.set(0.0);
-		/*this.movements.parallelStream()
-				.filter(m->m.getDate().compareTo(LocalDate.now())<=0)
-				.forEach(m->totalAmount+m.getAmount());
-		//this.logger.finest("TotalAmount getter.");  amount.set(m.getAmount()+amount.get())
-		return amount.get();*/
 		for(Movement m : movements){
 			if(!m.getDate().isAfter(LocalDate.now())){
 				if(type.equals(AccountType.ASSETS)) balance = balance+m.getRealAmount();
@@ -97,31 +61,10 @@ public class AccountBasic implements Account {
 		}
 		return balance;
 	}
-	
-	@Override
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
-	@Override
-	public void incrementBalance(double amount) {
-		balance = balance + amount;
-	}
-
-	@Override
-	public void decrementBalance(double amount) {
-		balance = balance - amount;
-		
-	}
 
 	@Override
 	public List<Movement> getMovements() {
 		return movements;
-	}
-	
-	@Override
-	public void setMovements(List<Movement> m) {
-		movements = m;
 	}
 
 	@Override

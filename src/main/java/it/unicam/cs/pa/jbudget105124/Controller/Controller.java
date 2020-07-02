@@ -32,13 +32,6 @@ public interface Controller {
 	void removeTag(Tag t);
 
 	/**
-	 *Metodo per ritornare un tag avente un determinato ID
-	 * @param ID det tag
-	 * @return tag ritornato
-	 */
-	Tag getTag(int ID);
-
-	/**
 	 * Metodo per ritornare tutta la lista di tag
 	 * @return lista di tag
 	 */
@@ -55,14 +48,6 @@ public interface Controller {
 	 * @param m movimento da rimuovere
 	 */
 	void removeMovement(Movement m);
-
-	/**
-	 * Metodo per ritornare un singolo movimento
-	 * @param mID id del movimento
-	 * @param tID id della transazione che lo contiene
-	 * @return movimento ritornato
-	 */
-	Movement getMovement(int mID,int tID);
 
 	/**
 	 * Metodo per ritornare la lista di movimenti
@@ -83,13 +68,6 @@ public interface Controller {
 	void removeTransaction(Transaction t);
 
 	/**
-	 * Metodo per ritornare una singola transazione
-	 * @param ID id della transazione
-	 * @return transazione ritornata
-	 */
-	Transaction getTransaction(int ID);
-
-	/**
 	 * Metodo per ritornare la lista di transazioni
 	 * @return lista di transazioni
 	 */
@@ -106,13 +84,6 @@ public interface Controller {
 	 * @param a account da rimuovere
 	 */
 	void removeAccount(Account a);
-
-	/**
-	 * Metodo per ritornare un account
-	 * @param ID id dell'account
-	 * @return account ritornato
-	 */
-	Account getAccount(int ID);
 
 	/**
 	 * Metodo per ritornare la lista di account
@@ -155,12 +126,6 @@ public interface Controller {
 	Map<Tag,Double> getBudgetTags();
 
 	/**
-	 * Mappa per effettuare la differenza tra il budget effettivo e reale
-	 * @return mappa del budget con differenza
-	 */
-	Map<Tag,Double> checkBudget();
-
-	/**
 	 * Metodo per ritornare il Budget Report
 	 * @return bydget ritornato
 	 */
@@ -185,40 +150,4 @@ public interface Controller {
 	 * Metodo per resettare il Budget Report
 	 */
 	void resetReport();
-
-	//DA IMPLEMENTARE
-	//void resetBudgetTags();
-	//void update();
-	//void read(Reader<BudgetReport> reader) throws IOException;
-	//void save(Writer<BudgetReport> writer) throws IOException;
-
-
-
-
-	/*boolean checkDate(String Localdate);
-
-	boolean checkDouble(String number);
-
-	boolean checkAccountType(String account);
-
-	boolean checkMovementType(String movement);
-
-	boolean checkInt(String number);
-
-	boolean checkIDTag(int id);
-
-	boolean checkIDAccount(int id);
-
-	boolean checkIDTransaction(int id);
-
-	boolean checkIDMovement(int id,Transaction transaction);
-
-	void updateAccount(double amount,Movement m);
-
-	void updateBalance(Movement m,List<Tag> tags);
-
-	Predicate<Transaction> checkFilter(String f);
-
-	void compareDate(LocalDate date);*/
-
 }

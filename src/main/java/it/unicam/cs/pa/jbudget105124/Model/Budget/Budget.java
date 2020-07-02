@@ -31,12 +31,6 @@ public interface Budget extends Serializable {
 	List<Tag> getTags();
 
 	/**
-	 * Metodo per impostare la lista di tag
-	 * @param t lista di tag
-	 */
-	void setTags(List<Tag> t);
-
-	/**
 	 * Metodo per ritornare il budget di un tag
 	 * @param t tag di cui si vuole l'amount
 	 * @return amount del tag

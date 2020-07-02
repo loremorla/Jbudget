@@ -15,6 +15,13 @@ public interface MovementManager {
 
     /**
      * Metodo per generare un MovementBasic.
+     * @param ID
+     * @param amount
+     * @param description
+     * @param account
+     * @param tag
+     * @param mt
+     * @param t
      * @return MovementBasic generato.
      */
     static Movement createMovement(int ID, double amount, String description, Account account,

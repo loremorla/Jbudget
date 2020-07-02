@@ -89,6 +89,7 @@ public class ControllerBudgetGUI implements ControllerFXML {
     }
 
     private void updateBudget(){
+        notificationBudget.setText(" ");
         lBudget.removeAll(lBudget);
         lBudget.addAll(controller.getBudgetTags().entrySet());
         budgetTable.setItems(lBudget);

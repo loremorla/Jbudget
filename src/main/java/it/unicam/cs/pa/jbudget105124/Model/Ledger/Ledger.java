@@ -22,12 +22,6 @@ public interface Ledger extends Serializable {
 	List<Account> getAccounts();
 
 	/**
-	 * Metodo per impostare la lista di account
-	 * @param a lista di account
-	 */
-	void setAccounts(List<Account> a);
-
-	/**
 	 * Metodo per ritornare un singolo tag passato il suo ID
 	 * @param ID ID del tag
 	 * @return tag ritornato
@@ -76,12 +70,6 @@ public interface Ledger extends Serializable {
 	List<Movement> getMovements();
 
 	/**
-	 * Metodo per impostare la lista di movimenti
-	 * @param m lista di movimenti
-	 */
-	void setMovements(List<Movement> m);
-
-	/**
 	 * Metodo per aggiungere una transazione
 	 * @param t transazione da aggiungere
 	 */
@@ -100,22 +88,10 @@ public interface Ledger extends Serializable {
 	List<Transaction> getTransactions();
 
 	/**
-	 * Metodo per impostare la lista di transazioni
-	 * @param t lista di transazioni
-	 */
-	void setTransactions(List<Transaction> t);
-
-	/**
 	 * Metodo per ritornare la lista di tag
 	 * @return lista di tag
 	 */
 	List<Tag> getTags();
-
-	/**
-	 * Metodo per impostare la lista di tag
-	 * @param t lista di tag
-	 */
-	void setTags(List<Tag> t);
 
 	/**
 	 * Metodo per aggiungere un accaunt
@@ -134,13 +110,6 @@ public interface Ledger extends Serializable {
 	 * @param t tag da aggiungere
 	 */
 	void addTag(Tag t);
-
-	/**
-	 * Metodo per aggiungere un budget
-	 * @param t tag del budget
-	 * @param d amount da associare al tag
-	 */
-	void addBudget(Tag t, double d);
 
 	/**
 	 * Metodo per rimuovere un tag

@@ -13,8 +13,6 @@ import java.util.Map;
  * dall'utente e quello reale.
  */
 public interface BudgetReport extends Serializable {
-	
-	//List<Tag> getTags();
 
 	/**
 	 * Metodo per generare la differenza tra il budget aspettato
@@ -22,22 +20,6 @@ public interface BudgetReport extends Serializable {
 	 * @return mappa dei budget riportanti la differenza
 	 */
 	Map<Tag,Double> report();
-
-	//Map<Tag,Double>  getEffectiveBudget();
-
-	/**
-	 * Metodo per ritornare l'amount di un tag
-	 * @param t tag soggetto
-	 * @return amount del tag
-	 */
-	double getTag(Tag t);
-
-	/**
-	 * Metodo per ritornare l'amount effettivo di un tag
-	 * @param t tag soggetto
-	 * @return amount effettivo del tag
-	 */
-	double getEffectiveAmount(Tag t);
 
 	/**
 	 * Metodo per ritornare il ledger

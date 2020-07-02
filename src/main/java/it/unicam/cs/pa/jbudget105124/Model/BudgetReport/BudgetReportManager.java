@@ -10,6 +10,8 @@ public interface BudgetReportManager {
 
     /**
      * Metodo per generare un BudgetReportBasic.
+     * @param ledger
+     * @param budget
      * @return BudgetReportBasic generato.
      */
     static BudgetReport createReport(Ledger ledger, Budget budget){

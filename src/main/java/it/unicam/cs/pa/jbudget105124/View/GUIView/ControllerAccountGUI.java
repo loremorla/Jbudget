@@ -94,6 +94,7 @@ public class ControllerAccountGUI implements ControllerFXML {
     }
 
     private void updateAccounts(){
+        notificationAccount.setText(" ");
         lAccount.removeAll(lAccount);
         lAccount.addAll(controller.getAccounts());
         accountTable.setItems(lAccount);

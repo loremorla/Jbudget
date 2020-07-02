@@ -97,6 +97,7 @@ public class ControllerTransactionGUI implements ControllerFXML {
     }
 
     private void updateTransactions(){
+        notificationTransaction.setText(" ");
         lTransaction.removeAll(lTransaction);
         lTransaction.addAll(controller.getTransactions());
         transactionsTable.setItems(lTransaction);

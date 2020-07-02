@@ -68,7 +68,7 @@ public class ControllerMovementGUI implements ControllerFXML {
                         movType.getValue() != null && tagName.getValue() != null) {
                     Movement m = MovementManager.createMovement(Integer.parseInt(idMovement.getText()),
                             Double.parseDouble(amount.getText()), description.getText(), accountName.getValue(), tagName.getValue(),
-                            movType.getValue(), controller.getTransaction(IDtransaction));
+                            movType.getValue(), controller.getBudgetReport().getLedger().getSingleTransaction(IDtransaction));
                     controller.addMovement(m);
                     updateMovements();
                 }
@@ -104,8 +104,9 @@ public class ControllerMovementGUI implements ControllerFXML {
     }
 
     private void updateMovements(){
+        notificationMovement.setText(" ");
         lMovement.removeAll(lMovement);
-        lMovement.addAll(controller.getTransaction(IDtransaction).getMovements());
+        lMovement.addAll(controller.getBudgetReport().getLedger().getSingleTransaction(IDtransaction).getMovements());
         movementsTable.setItems(lMovement);
         idColumn.setCellValueFactory
                 (cellData -> new SimpleObjectProperty<>(cellData.getValue().getID()));

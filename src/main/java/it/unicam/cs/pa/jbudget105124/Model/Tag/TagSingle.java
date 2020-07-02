@@ -24,20 +24,10 @@ public class TagSingle implements Tag {
 	public String getName() {
 		return name;
 	}
-	
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	@Override
 	public int getID() {
 		return ID;
-	}
-	
-	@Override
-	public void setID(int ID) {
-		this.ID = ID;
 	}
 
 	@Override
@@ -47,14 +37,7 @@ public class TagSingle implements Tag {
 
 	@Override
 	public double getTotalAmount() {
-		//AtomicReference<Double> amount = new AtomicReference<>();
 		totalAmount = 0.0;
-		//amount.set(0.0);
-		/*this.movements.parallelStream()
-				.filter(m->m.getDate().compareTo(LocalDate.now())<=0)
-				.forEach(m->totalAmount+m.getAmount());
-		//this.logger.finest("TotalAmount getter.");  amount.set(m.getAmount()+amount.get())
-		return amount.get();*/
 		for(Movement m : movements){
 			if(!m.getDate().isAfter(LocalDate.now())){
 				totalAmount = totalAmount+m.getRealAmount();

@@ -58,6 +58,7 @@ public class SimpleController implements Controller {
 			budgetReport.getLedger().removeMovements(m);
 		}
 		budgetReport.getLedger().removeTag(t);
+		removeBudgetTag(t);
 	}
 
 	/**

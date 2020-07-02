@@ -11,6 +11,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -19,69 +20,75 @@
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.pa.jbudget105124.View.GUIView.ControllerHomeGUI">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="615.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-                  <MenuItem mnemonicParsing="false" onAction="#newReport" text="New" />
-                  <MenuItem mnemonicParsing="false" onAction="#load" text="Load" />
-                  <MenuItem mnemonicParsing="false" onAction="#store" text="Store" />
-              <MenuItem mnemonicParsing="false" onAction="#clear" text="Clear" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-            <Button mnemonicParsing="false" onAction="#save" text="Save" />
-          <Button mnemonicParsing="false" onAction="#accountInterfaces" text="ACCOUNT" />
-            <Button mnemonicParsing="false" onAction="#tagInterface" text="TAG" />
-            <Button mnemonicParsing="false" onAction="#transactionInterface" text="TRANSACTION" />
-            <Button mnemonicParsing="false" onAction="#budgetInterface" text="BUDGET" />
-            <Button mnemonicParsing="false" onAction="#refreshTransaction" text="REFRESH" />
-        </buttons>
-      </ButtonBar>
-      <BorderPane prefHeight="380.0" prefWidth="600.0">
-         <center>
-            <TableView fx:id="transactionsTable" prefHeight="397.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-              <columns>
-                  <TableColumn fx:id="idColumn" prefWidth="91.0" text="ID" />
-                <TableColumn fx:id="dateColumn" prefWidth="138.0" text="DATE" />
-                <TableColumn fx:id="amountColumn" prefWidth="127.0" text="AMOUNT" />
-                  <TableColumn fx:id="descriptionColumn" prefWidth="258.0" text="DESCRIPTION" />
-              </columns>
-            </TableView>
-         </center>
-         <top>
-            <GridPane prefHeight="30.0" prefWidth="586.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="0.0" prefWidth="22.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="3.0" prefWidth="59.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="0.0" prefWidth="92.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="440.0" minWidth="0.0" prefWidth="24.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="60.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="0.0" prefWidth="133.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="120.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="43.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="43.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="20.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+      <AnchorPane prefHeight="754.0" prefWidth="1149.0">
+         <children>
+            <VBox layoutY="-255.0" prefHeight="530.0" prefWidth="1149.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <RadioButton fx:id="tagButton" mnemonicParsing="false" text="TAG" GridPane.columnIndex="1" />
-                  <ChoiceBox fx:id="tagChoice" prefHeight="25.0" prefWidth="91.0" GridPane.columnIndex="2" />
-                  <RadioButton fx:id="dateButton" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" text="DATE" GridPane.columnIndex="4" />
-                  <DatePicker fx:id="dateFrom" GridPane.columnIndex="5" />
-                  <DatePicker fx:id="dateTo" GridPane.columnIndex="6" />
-                  <Button mnemonicParsing="false" onAction="#schedule" prefHeight="25.0" prefWidth="38.0" text="OK" GridPane.columnIndex="8" />
+                  <MenuBar prefHeight="30.0" prefWidth="1149.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                              <MenuItem mnemonicParsing="false" onAction="#newReport" text="New" />
+                              <MenuItem mnemonicParsing="false" onAction="#load" text="Load" />
+                              <MenuItem mnemonicParsing="false" onAction="#store" text="Store" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+                  <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                    <buttons>
+                      <Button mnemonicParsing="false" onAction="#accountInterfaces" text="ACCOUNT" />
+                        <Button mnemonicParsing="false" onAction="#tagInterface" text="TAG" />
+                        <Button mnemonicParsing="false" onAction="#transactionInterface" text="TRANSACTION" />
+                        <Button mnemonicParsing="false" onAction="#budgetInterface" text="BUDGET" />
+                        <Button mnemonicParsing="false" onAction="#refreshTransaction" text="REFRESH" />
+                    </buttons>
+                  </ButtonBar>
+                  <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="3000.0" prefWidth="1149.0">
+                     <center>
+                        <TableView fx:id="transactionsTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                          <columns>
+                              <TableColumn fx:id="idColumn" prefWidth="91.0" text="ID" />
+                            <TableColumn fx:id="dateColumn" prefWidth="138.0" text="DATE" />
+                            <TableColumn fx:id="amountColumn" prefWidth="127.0" text="AMOUNT" />
+                              <TableColumn fx:id="descriptionColumn" prefWidth="258.0" text="DESCRIPTION" />
+                          </columns>
+                        </TableView>
+                     </center>
+                     <top>
+                        <GridPane prefHeight="30.0" prefWidth="586.0" BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="0.0" prefWidth="22.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="3.0" prefWidth="59.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="0.0" prefWidth="92.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="440.0" minWidth="0.0" prefWidth="24.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="60.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="0.0" prefWidth="133.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="43.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="43.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="20.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <RadioButton fx:id="tagButton" mnemonicParsing="false" text="TAG" GridPane.columnIndex="1" />
+                              <ChoiceBox fx:id="tagChoice" prefHeight="25.0" prefWidth="91.0" GridPane.columnIndex="2" />
+                              <RadioButton fx:id="dateButton" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" text="DATE" GridPane.columnIndex="4" />
+                              <DatePicker fx:id="dateFrom" GridPane.columnIndex="5" />
+                              <DatePicker fx:id="dateTo" GridPane.columnIndex="6" />
+                              <Button mnemonicParsing="false" onAction="#schedule" prefHeight="25.0" prefWidth="38.0" text="OK" GridPane.columnIndex="8" />
+                           </children>
+                        </GridPane>
+                     </top>
+                     <bottom>
+                        <Label fx:id="notificationHome" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
                </children>
-            </GridPane>
-         </top>
-         <bottom>
-            <Label fx:id="notificationHome" BorderPane.alignment="CENTER" />
-         </bottom>
-      </BorderPane>
+            </VBox>
+         </children>
+      </AnchorPane>
    </children>
 </VBox>

@@ -28,8 +28,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 public class ControllerHomeGUI implements ControllerFXML {
+
+    private final static Logger logger = Logger.getGlobal();
 
     private Controller controller = ControllerManager.createController();
     @FXML private RadioButton tagButton;
@@ -45,7 +48,6 @@ public class ControllerHomeGUI implements ControllerFXML {
     @FXML private TableColumn<Transaction,String> descriptionColumn;
     private ObservableList<Transaction> lScheduledTr;
     private ObservableList<Tag> lTag;
-    private Writer writer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,16 +80,22 @@ public class ControllerHomeGUI implements ControllerFXML {
 
     @FXML
     public void schedule() {
-        if(tagButton.isSelected() && tagChoice.getValue() != null) {
-            lScheduledTr.setAll(this.controller.scheduledTransactionsTag(tagChoice.getValue()));
-            //logger.info("Transactions scheduled by tag: ["+tagSchedChoice.getValue().toString()+"]");
+        try {
+            if (tagButton.isSelected() && tagChoice.getValue() != null) {
+                lScheduledTr.setAll(this.controller.scheduledTransactionsTag(tagChoice.getValue()));
+                //logger.info("Transactions scheduled by tag: ["+tagSchedChoice.getValue().toString()+"]");
+            }
+            if (dateButton.isSelected() && dateFrom.getValue() != null && dateTo.getValue() != null) {
+                lScheduledTr.setAll(this.controller.scheduledTransactionsDate(dateFrom.getValue(), dateTo.getValue()));
+                //logger.info("Transactions scheduled by date: ["+dateStart.getValue()+","+dateStop.getValue()+"]");
+            }
+            if (!tagButton.isSelected() && !dateButton.isSelected())
+                refreshTransaction();
+            transactionsTable.refresh();
+        }catch (Exception e){
+            logger.warning("Error in Schedule");
+            notificationHome.setText("Error in Schedule");
         }
-        if(dateButton.isSelected() && dateFrom.getValue() != null && dateTo.getValue() != null) {
-            lScheduledTr.setAll(this.controller.scheduledTransactionsDate(dateFrom.getValue(),dateTo.getValue()));
-            //logger.info("Transactions scheduled by date: ["+dateStart.getValue()+","+dateStop.getValue()+"]");
-        }
-        if(!tagButton.isSelected() && !dateButton.isSelected()) refreshTransaction();
-        transactionsTable.refresh();
     }
 
     private void updateTransactions(){
@@ -108,30 +116,26 @@ public class ControllerHomeGUI implements ControllerFXML {
 
     @FXML
     public void refreshTransaction(){
-        updateTransactions();
-        lTag.removeAll(lTag);
-        lTag.addAll(controller.getTags());
-        tagChoice.setItems(lTag);
+        try {
+            updateTransactions();
+            lTag.removeAll(lTag);
+            lTag.addAll(controller.getTags());
+            tagChoice.setItems(lTag);
+            notificationHome.setText(" ");
+        }catch (Exception e){
+            logger.warning("Error in Refresh");
+            notificationHome.setText("Error in Refresh");
+        }
     }
 
     @FXML
     public void newReport() {
         try {
-            clear();
-            String path = createFileChooser().showSaveDialog(new Stage()).getAbsolutePath();
-            this.writer = new TxtWriter(path);
-            this.controller.write(this.writer);
-        } catch (Exception e) {
-
-        }
-    }
-
-    @FXML
-    public void clear() {
-        try {
             this.controller.resetReport();
+            refreshTransaction();
         } catch (Exception e) {
-
+            logger.warning("Error in New");
+            notificationHome.setText("Error in New");
         }
     }
 
@@ -140,11 +144,10 @@ public class ControllerHomeGUI implements ControllerFXML {
         try {
             String path = createFileChooser().showOpenDialog(new Stage()).getAbsolutePath();
             this.controller.read(new TxtReader(path));
-            this.writer = new TxtWriter(path);
             refreshTransaction();
-            //checkTransaction();
         } catch (Exception e) {
-
+            logger.warning("Error in Load");
+            notificationHome.setText("Error in Load");
         }
     }
 
@@ -152,10 +155,10 @@ public class ControllerHomeGUI implements ControllerFXML {
     public void store() {
         try {
             String path = createFileChooser().showSaveDialog(new Stage()).getAbsolutePath();
-            this.writer = new TxtWriter(path);
-            save();
+            this.controller.write(new TxtWriter(path));
         } catch (Exception e) {
-
+            logger.warning("Error in Store");
+            notificationHome.setText("Error in Store");
         }
     }
 
@@ -165,13 +168,5 @@ public class ControllerHomeGUI implements ControllerFXML {
                 .addAll(new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
         fileChooser.setInitialFileName("JBudget");
         return fileChooser;
-    }
-
-    public void save(){
-        try {
-            this.controller.write(writer);
-        } catch (IOException e) {
-
-        }
     }
 }

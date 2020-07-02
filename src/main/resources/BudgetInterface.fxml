@@ -7,53 +7,62 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ButtonBar>
-        <buttons>
-            <Button mnemonicParsing="false" onAction="#addTag" text="ADD" />
-            <Button mnemonicParsing="false" onAction="#clearBudget" text="CLEAR" />
-          <Button mnemonicParsing="false" onAction="#deleteBudget" text="DELETE" />
-        </buttons>
-      </ButtonBar>
-      <BorderPane prefHeight="379.0" prefWidth="600.0">
-         <bottom>
-            <Label fx:id="notificationBudget" BorderPane.alignment="CENTER" />
-         </bottom>
-         <center>
-            <TableView fx:id="budgetTable" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn fx:id="tagColumn" prefWidth="75.0" text="TAG" />
-                <TableColumn fx:id="estAmountColumn" prefWidth="162.0" text="ESTIMATED AMOUNT" />
-                  <TableColumn fx:id="realAmountColumn" prefWidth="182.0" text="REAL AMOUNT" />
-                  <TableColumn fx:id="totalColumn" prefWidth="180.0" text="REPORT" />
-              </columns>
-            </TableView>
-         </center>
-         <top>
-            <GridPane BorderPane.alignment="CENTER">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="33.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="129.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="55.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="136.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="227.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="Tag" prefWidth="150.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="estimatedAmount" promptText="estimated amount" GridPane.columnIndex="3" />
+                  <ButtonBar>
+                    <buttons>
+                        <Button mnemonicParsing="false" onAction="#addTag" text="ADD" />
+                        <Button mnemonicParsing="false" onAction="#clearBudget" text="CLEAR" />
+                      <Button mnemonicParsing="false" onAction="#deleteBudget" text="DELETE" />
+                    </buttons>
+                  </ButtonBar>
+                  <BorderPane prefHeight="379.0" prefWidth="600.0">
+                     <bottom>
+                        <Label fx:id="notificationBudget" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <TableView fx:id="budgetTable" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn fx:id="tagColumn" prefWidth="75.0" text="TAG" />
+                            <TableColumn fx:id="estAmountColumn" prefWidth="162.0" text="ESTIMATED AMOUNT" />
+                              <TableColumn fx:id="realAmountColumn" prefWidth="182.0" text="REAL AMOUNT" />
+                              <TableColumn fx:id="totalColumn" prefWidth="180.0" text="REPORT" />
+                          </columns>
+                        </TableView>
+                     </center>
+                     <top>
+                        <GridPane BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="33.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.0" minWidth="10.0" prefWidth="129.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="55.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="136.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="227.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ChoiceBox fx:id="Tag" prefWidth="150.0" GridPane.columnIndex="1" />
+                              <TextField fx:id="estimatedAmount" promptText="estimated amount" GridPane.columnIndex="3" />
+                           </children>
+                        </GridPane>
+                     </top>
+                  </BorderPane>
                </children>
-            </GridPane>
-         </top>
-      </BorderPane>
+            </VBox>
+         </children>
+      </AnchorPane>
    </children>
 </VBox>

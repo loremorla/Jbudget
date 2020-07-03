@@ -115,6 +115,14 @@ public class ControllerTransactionGUI implements ControllerFXML {
     }
 
     /**
+     * Metodo per fare refresh della pagina
+     */
+    @FXML
+    public void refreshTransaction(){
+        updateTransactions();
+    }
+
+    /**
      * Metodo per eliminare una transazione
      */
     @FXML

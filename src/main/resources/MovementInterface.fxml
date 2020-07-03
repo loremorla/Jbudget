@@ -18,8 +18,8 @@
       <ButtonBar>
         <buttons>
             <Button mnemonicParsing="false" onAction="#addMovement" text="ADD" />
-            <Button mnemonicParsing="false" onAction="#clearTransaction" text="CLEAR" />
-          <Button mnemonicParsing="false" onAction="#deleteTransaction" text="DELETE" />
+            <Button mnemonicParsing="false" onAction="#clearMovement" text="CLEAR" />
+          <Button mnemonicParsing="false" onAction="#deleteMovement" text="DELETE" />
         </buttons>
       </ButtonBar>
       <BorderPane prefHeight="379.0" prefWidth="600.0">

@@ -58,7 +58,6 @@ public class BudgetTest {
         List<Tag> Tags = new ArrayList<>();
         Tags.add(vacanza);
         Tags.add(trasporto);
-        //assertEquals(Tags,budget.getTags());
         budget.remove(vacanza);
         assertNotEquals(Tags,budget.getTags());
     }

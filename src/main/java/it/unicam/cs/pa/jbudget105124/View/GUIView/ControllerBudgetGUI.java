@@ -1,44 +1,80 @@
 package it.unicam.cs.pa.jbudget105124.View.GUIView;
 
 import it.unicam.cs.pa.jbudget105124.Controller.Controller;
-import it.unicam.cs.pa.jbudget105124.Model.Account.Account;
-import it.unicam.cs.pa.jbudget105124.Model.Budget.Budget;
-import it.unicam.cs.pa.jbudget105124.Model.Budget.BudgetManager;
-import it.unicam.cs.pa.jbudget105124.Model.BudgetReport.BudgetReport;
 import it.unicam.cs.pa.jbudget105124.Model.Tag.Tag;
-import it.unicam.cs.pa.jbudget105124.Model.Tag.TagManager;
-import it.unicam.cs.pa.jbudget105124.Model.Transaction.Transaction;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+/**
+ * Classe che ha il compito di fare da controller alla  BudgetGUI.
+ */
 public class ControllerBudgetGUI implements ControllerFXML {
 
+    /**
+     * Controller
+     */
     private Controller controller;
+    /**
+     * ChoiceBox per selezionare il tag
+     */
     @FXML private ChoiceBox<Tag> Tag;
+    /**
+     * Text Field per impostare il budget ad tag
+     */
     @FXML private TextField estimatedAmount;
+    /**
+     * Label per le notifiche del budget
+     */
     @FXML private Label notificationBudget;
+    /**
+     * Tabella dei budget con real amount del tag ed il report
+     */
     @FXML private TableView<Map.Entry<Tag,Double>> budgetTable;
+    /**
+     * Colonna del tag
+     */
     @FXML private TableColumn<Map.Entry<Tag,Double>,Tag> tagColumn;
+    /**
+     * Colonna del report
+     */
     @FXML private TableColumn<Map.Entry<Tag,Double>,Double> totalColumn;
+    /**
+     * Colonna del budget per il tag inserito dall'utente
+     */
     @FXML private TableColumn<Map.Entry<Tag,Double>,Double> estAmountColumn;
+    /**
+     * Colonna per il real amount del tag
+     */
     @FXML private TableColumn<Map.Entry<Tag,Double>,Double> realAmountColumn;
+    /**
+     * Observable list di budget
+     */
     private ObservableList<Map.Entry<Tag,Double>> lBudget;
+    /**
+     * Observable list di tag
+     */
     private ObservableList<Tag> lTag;
 
+    /**
+     * Costruttore di ControllerBudgetGUI
+     * @param controller
+     */
     public ControllerBudgetGUI(Controller controller) {
         this.controller = controller;
     }
 
+    /**
+     * Metodo che il compito di inizializzare le variabili
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lBudget = FXCollections.observableArrayList();
@@ -48,7 +84,10 @@ public class ControllerBudgetGUI implements ControllerFXML {
         updateBudget();
     }
 
-    public void addTag() {
+    /**
+     * Metodo per aggiungere un budget
+     */
+    public void addBudget() {
         try {
             if (estimatedAmount.getText() != null) {
                 Tag t = Tag.getValue();
@@ -60,26 +99,32 @@ public class ControllerBudgetGUI implements ControllerFXML {
             notificationBudget.setText("Operation Failed!");
         }finally {
             estimatedAmount.clear();
-            //idTag.clear();
         }
     }
 
+    /**
+     * Metodo per resettare i text Field
+     */
     @FXML
     public void clearBudget(){
         estimatedAmount.clear();
-        //accountType.clear();
     }
 
+    /**
+     * Metodo per eliminare un tag
+     */
     @FXML
     public void deleteBudget(){
         Tag tag = budgetTable.getSelectionModel().getSelectedItem().getKey();
         if(!budgetTable.getItems().isEmpty() & tag != null) {
             controller.removeBudgetTag(tag);
             refreshBudget();
-            //updateBudget();
         }
     }
 
+    /**
+     * Metodo per far refresh della finestra
+     */
     @FXML
     public void refreshBudget(){
         updateBudget();
@@ -88,6 +133,9 @@ public class ControllerBudgetGUI implements ControllerFXML {
         Tag.setItems(lTag);
     }
 
+    /**
+     * Metodo per aggiornare la tabella dei budget
+     */
     private void updateBudget(){
         notificationBudget.setText(" ");
         lBudget.removeAll(lBudget);

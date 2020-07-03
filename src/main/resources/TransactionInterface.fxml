@@ -17,7 +17,7 @@
    <children>
       <ButtonBar>
         <buttons>
-            <Button mnemonicParsing="false" onAction="#refreshTransaction" text="REFRESH" />
+            <Button mnemonicParsing="false" onAction="#updateTransactions" text="REFRESH" />
             <Button mnemonicParsing="false" onAction="#addTransaction" text="ADD" />
             <Button mnemonicParsing="false" onAction="#clearTransaction" text="CLEAR" />
             <Button mnemonicParsing="false" onAction="#deleteTransaction" text="DELETE" />

@@ -6,14 +6,16 @@ package it.unicam.cs.pa.jbudget105124;
 import it.unicam.cs.pa.jbudget105124.View.GUIView.GUIViewStart;
 import javafx.application.Application;
 
-import java.util.logging.Logger;
-
+/**
+ * Classe da cui da cui parte il programma
+ */
 public class App {
-    private final static Logger logger = Logger.getGlobal();
 
+    /**
+     * Metodo main da cui viene lanciata la GUI View
+     * @param args
+     */
     public static void main(String[] args) {
-        logger.info("App started");
         Application.launch(GUIViewStart.class);
-        logger.info("App closed");
     }
 }

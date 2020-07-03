@@ -13,28 +13,85 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Classe che ha il compito di fare da controller alla AccountGUI.
+ */
 public class ControllerAccountGUI implements ControllerFXML {
 
+    /**
+     * Controller
+     */
     private Controller controller;
+    /**
+     * Text Field per nome dell'account
+     */
     @FXML private TextField nameAccount;
+    /**
+     * Text Field per ID dell'account
+     */
     @FXML private TextField idAccount;
+    /**
+     * Text Field per opening balance dell'account
+     */
     @FXML private TextField obAccount;
+    /**
+     * Text Field per descrizione dell'account
+     */
     @FXML private TextField description;
+    /**
+     * ChoiceBox per il tipo di account
+     */
     @FXML private ChoiceBox<AccountType> accountType;
+    /**
+     * Label per le notifiche dell'Account
+     */
     @FXML private Label notificationAccount;
+    /**
+     * Tabella degli accounts
+     */
     @FXML private TableView<Account> accountTable;
+    /**
+     * Colonna ID dell'account
+     */
     @FXML private TableColumn<Account,Integer> idColumn;
+    /**
+     * Colonna nome dell'account
+     */
     @FXML private TableColumn<Account,String> nameColumn;
+    /**
+     * Colonna bilancio dell'account
+     */
     @FXML private TableColumn<Account,Double> balanceColumn;
+    /**
+     * Colonna per il tipo di account
+     */
     @FXML private TableColumn<Account,AccountType> accTypeColumn;
+    /**
+     * Colonna per la descrizione dell'account
+     */
     @FXML private TableColumn<Account,String> descriptionColumn;
+    /**
+     * Observable list AccountType
+     */
     private ObservableList<AccountType> lAccountType;
+    /**
+     * Observable list di account
+     */
     private ObservableList<Account> lAccount;
 
+    /**
+     * Costruttore di ControllerAccountGUI
+     * @param controller
+     */
     public ControllerAccountGUI(Controller controller) {
         this.controller = controller;
     }
 
+    /**
+     * Metodo che ha il compito di inizializzare le variabili
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lAccount = FXCollections.observableArrayList();
@@ -45,6 +102,9 @@ public class ControllerAccountGUI implements ControllerFXML {
         updateAccounts();
     }
 
+    /**
+     * Metodo per aggiungere un account
+     */
     @FXML
     public void addAccount(){
         try {
@@ -72,6 +132,9 @@ public class ControllerAccountGUI implements ControllerFXML {
         }
     }
 
+    /**
+     * Metodo per resettare i Text Field
+     */
     @FXML
     public void clearAccount(){
         idAccount.clear();
@@ -80,7 +143,9 @@ public class ControllerAccountGUI implements ControllerFXML {
         obAccount.clear();
     }
 
-
+    /**
+     * Metodo per eliminare un account
+     */
     @FXML
     public void deleteAccount(){
         Account account = accountTable.getSelectionModel().getSelectedItem();
@@ -90,6 +155,9 @@ public class ControllerAccountGUI implements ControllerFXML {
         }
     }
 
+    /**
+     * Metodo per aggiornare la tabella degli accounts
+     */
     private void updateAccounts(){
         notificationAccount.setText(" ");
         lAccount.removeAll(lAccount);

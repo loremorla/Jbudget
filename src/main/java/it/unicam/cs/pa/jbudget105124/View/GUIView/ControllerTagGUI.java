@@ -15,27 +15,66 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Classe che ha il compito di fare da controller alla  TagGUI.
+ */
 public class ControllerTagGUI implements ControllerFXML {
 
+    /**
+     * Controller
+     */
     private Controller controller;
+    /**
+     * Text Field per inserire il nome del tag
+     */
     @FXML private TextField nameTag;
+    /**
+     * Text Field per inserire l'ID del tag
+     */
     @FXML private TextField idTag;
+    /**
+     * Label per le notifiche del tag
+     */
     @FXML private Label notificationTag;
+    /**
+     * Tabella dei tag
+     */
     @FXML private TableView<Tag> tagTable;
+    /**
+     * Colonna ID del tag
+     */
     @FXML private TableColumn<Tag,Integer> idColumn;
+    /**
+     * Colonna nome del tag
+     */
     @FXML private TableColumn<Tag,String> nameColumn;
+    /**
+     * Observable list di tag
+     */
     private ObservableList<Tag> lTag;
 
+    /**
+     * Costruttore di ControllerTagGUI
+     * @param controller
+     */
     public ControllerTagGUI(Controller controller) {
         this.controller = controller;
     }
 
+    /**
+     * Metodo per inizializzare le variabili
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lTag = FXCollections.observableArrayList();
         updateTags();
     }
 
+    /**
+     * Metodo per aggiungere un tag
+     */
     @FXML
     public void addTag(){
         try {
@@ -58,17 +97,18 @@ public class ControllerTagGUI implements ControllerFXML {
         }
     }
 
+    /**
+     * Metodo per resettare i Text Field
+     */
     @FXML
     public void clearTag(){
         nameTag.clear();
         idTag.clear();
     }
 
-    @FXML
-    public void refreshTag(){
-        updateTags();
-    }
-
+    /**
+     * Metodo per eliminare un tag
+     */
     @FXML
     public void deleteTag(){
         Tag tag = tagTable.getSelectionModel().getSelectedItem();
@@ -78,6 +118,9 @@ public class ControllerTagGUI implements ControllerFXML {
         }
     }
 
+    /**
+     * Metodo per aggiornare la tabella dei tag
+     */
     private void updateTags(){
         notificationTag.setText(" ");
         lTag.removeAll(lTag);

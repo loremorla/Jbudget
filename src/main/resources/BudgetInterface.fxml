@@ -17,7 +17,7 @@
    <children>
       <ButtonBar>
         <buttons>
-            <Button mnemonicParsing="false" onAction="#addTag" text="ADD" />
+            <Button mnemonicParsing="false" onAction="#addBudget" text="ADD" />
             <Button mnemonicParsing="false" onAction="#clearBudget" text="CLEAR" />
           <Button mnemonicParsing="false" onAction="#deleteBudget" text="DELETE" />
         </buttons>

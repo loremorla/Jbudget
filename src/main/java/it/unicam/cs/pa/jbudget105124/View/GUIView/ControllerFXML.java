@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Interfaccia che sarà implementata dalle classi che hanno il compito di fare da controllo
- * della GUI View.
+ * Interfaccia che ha il compito di fare da controller alla GUI View e di interagire
+ * con il controller dell'MVC.
  */
 public interface ControllerFXML extends Initializable {
 
